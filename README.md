@@ -14,7 +14,7 @@ Cara update :
 5. git push -u origin main // Buat ngirim kode ke branch utama
 
 Catatan Program :
-
+1. Jika error = error: remote origin already exists. Maka jalankan git remote remove origin
 
 Url :
 Winton = http://127.0.0.1:5500/views/home/index.html
