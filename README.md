@@ -13,10 +13,15 @@ Cara update :
 4. git commit -m "Menambahkan fitur login" // Buat ngasih pesan
 5. git push -u origin main // Buat ngirim kode ke branch utama
 
-Catatan Program :
-1. Jika error = error: remote origin already exists. Maka jalankan git remote remove origin
+Cara run program :
+1. Install composer
+2. php artisan serve (terminal)
+3. ctrl + klik kanan url yang muncul pada terminal
 
 Url :
-Winton = http://127.0.0.1:5500/views/home/index.html
-Deni = http://127.0.0.1:5500/views/login/index.html
-Alfian = http://127.0.0.1:5500/views/register/index.html
+Winton = http://127.0.0.1:8000/home
+Deni = http://127.0.0.1:8000/
+Alfian = http://127.0.0.1:8000/register
+
+Catatan Program :
+1. Jika error = error: remote origin already exists. Maka jalankan git remote remove origin
