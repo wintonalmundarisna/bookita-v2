@@ -4,7 +4,7 @@ Membuat aplikasi web tentang buku dengan menggunakan laravel 10 dan bootstrap 5
 Cara ambil projek :
 1. Buka vs code
 2. Buka terminal
-3. Ketik di htdocs git clone https://github.com/wintonalmundarisna/bookita.git
+3. Ketik di htdocs git clone https://github.com/wintonalmundarisna/booKita.git
 
 Cara update :
 1. git remote add origin https://github.com/wintonalmundarisna/booKita.git // Buat narget link
