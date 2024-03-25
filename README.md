@@ -15,8 +15,10 @@ Cara update :
 
 Cara run program :
 1. Install composer
-2. php artisan serve (terminal)
-3. ctrl + klik kanan url yang muncul pada terminal
+2. npm install (terminal)
+3. npm run dev (terminal)
+4. php artisan serve (terminal)
+5. ctrl + klik kanan url (php artisan serve) yang muncul pada terminal
 
 Url :
 Winton = http://127.0.0.1:8000/home
