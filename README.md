@@ -27,3 +27,9 @@ Alfian = http://127.0.0.1:8000/register
 
 Catatan Program :
 1. Jika error = error: remote origin already exists. Maka jalankan git remote remove origin
+
+
+Ukuran responsive
+Tampilan Desktop: 1024×768 hingga 1920×1080
+Tampilan Tablet: 601 × 962 hingga 1280 × 800
+Tampilan Seluler: 360 × 640 hingga 414 × 896
