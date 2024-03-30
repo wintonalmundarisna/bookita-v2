@@ -11,12 +11,43 @@
 
     {{-- Vite buat hot reload --}}
     @vite([])
+
+    {{-- icon bootstrap --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <title>Login</title>
-</head>
+
+    <head>
+        <div class="container pt-5">
+            <div class="row d-flex">
+                <div class="col">
+                    <form>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp">
+                            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1">
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 80%;">Submit <i
+                                class="bi bi-arrow-clockwise"></i></button>
+                    </form>
+                </div>
+                <div class="col">
+                    <img src="bookita.png" class="w-100" alt="">
+                </div>
+            </div>
+        </div>
+    </head>
 
 <body>
-    <h1>Ini halaman login</h1>
-    <p>belum punya akun ? <a href="/register">daftar disini</a></p>
+
 
     {{-- cdn bootstrap --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
