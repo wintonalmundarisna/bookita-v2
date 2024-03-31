@@ -21,8 +21,8 @@
 <style>
   body{
     font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-style: normal;
+    font-weight: 300;
+    font-style: normal;
   }
     .btn{
         background-color: #FF5D0A;
@@ -34,10 +34,10 @@
     }
     .form-control{
         border: none;
-  border-bottom: 2px solid #000842;
-  outline: none;
-  background: transparent;
-  border-radius: 0;
+    border-bottom: 2px solid #000842;
+    outline: none;
+    background: transparent;
+    border-radius: 0;
 
     }
     .form-label{
@@ -46,6 +46,7 @@
     .h2{
       color: #FF5D0A;
     }
+
 </style>
 
 <body>
@@ -90,7 +91,7 @@
       
             </div>
             <div class="col-sm-6 py-10 d-none d-sm-block pt-5">
-              <img src="sign up.svg"
+              <img  src="sign up.svg"
                 alt="Login image" class="w-75 vh-75" >
             </div>
           </div>
