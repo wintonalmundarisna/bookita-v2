@@ -69,6 +69,9 @@
                         <div class="pt-1 mb-4">
                     <button class="btn btn-warning btn-md rounded-pill fw-bold" type="button">Login</button>
                   </div>
+                  <div class="text-center">
+                      <span class="d-line">or continue white</span>
+                </div>
                     </form>
                 </div>
                 <div class="col">
