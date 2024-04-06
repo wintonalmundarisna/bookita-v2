@@ -46,7 +46,7 @@
     .h2{
       color: #FF5D0A;
     }
-
+    
 </style>
 
 <body>
@@ -92,7 +92,7 @@
             </div>
             <div class="col-sm-6 py-10 d-none d-sm-block pt-5">
               <img  src="sign up.svg"
-                alt="Login image" class="w-75 vh-75" >
+                alt="Login image" class="page-image w-75 vh-75" >
             </div>
           </div>
         </div>

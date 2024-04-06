@@ -23,4 +23,7 @@ Route::get('/', function () {
 Route::get('/home', function () {
     return view('home');
 });
+Route::get('/baca', function () {
+    return view('pageBaca');
+});
 
