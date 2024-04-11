@@ -118,17 +118,9 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Kontak</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">Koleksi</a>
                     </li>
                 </ul>
-                <div class="input-group d-md-flex">
-                    <input type="text" class="form-control bg-light border-0 rounded-0"
-                        placeholder="Cari berdasarkan judul buku.." aria-label="cari" aria-describedby="button-addon2">
-                    <button class="btn bg-light" type="button" id="button-addon2"><i class="bi bi-search"></i></button>
-                </div>
                 <div class="nav-link logout"><a href="" style="text-decoration: none; color: black">Logout</a>
                 </div>
             </div>
@@ -186,8 +178,8 @@
                 <div class="mb-3">
                     <label for="image" class="form-label">Upload Cover</label>
                     <img alt="" class="img-preview img-fluid mb-3 col-sm-5">
-                    <input type="file" class="form-control-buat @error('gambar') is-invalid @enderror"
-                        id="image" name="gambar" required onchange="previewImage()" />
+                    <input type="file" class="form-control-buat @error('gambar') is-invalid @enderror" id="image"
+                        name="gambar" required onchange="previewImage()" />
                     @error('gambar')
                         <p class="text-danger">{{ $message }}</p>
                     @enderror
