@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DaftarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/register', function () {
-    return view('register');
-});
+Route::get('/register', [DaftarController::class, 'index'])->middleware('guest');
+Route::post('/register', [DaftarController::class, 'daftar']);
+
 Route::get('/', function () {
     return view('login');
 });

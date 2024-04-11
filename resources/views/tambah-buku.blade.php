@@ -134,7 +134,7 @@
                 @csrf
                 <h4 class="text-header mb-4">Buat Buku</h4>
                 <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Judul</label>
+                    <label for="exampleFormControlInput1" class="form-label">Judul Buku</label>
                     <input type="text" placeholder="Masukkan Judul..." name="tagar"
                         class="form-control @error('tagar') is-invalid @enderror"
                         style="background: rgba(255, 255, 255, 0.20);
