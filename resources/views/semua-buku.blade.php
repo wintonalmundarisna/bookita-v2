@@ -12,7 +12,7 @@
 
     {{-- Vite buat hot reload --}}
     @vite([])
-    <title>Home</title>
+    <title>Semua Buku</title>
 
     <style>
         html {
@@ -33,7 +33,7 @@
             }
 
             .jadikan {
-                font-size: 3vw;
+                font-size: 3.5vw;
             }
 
             .address {
@@ -44,21 +44,38 @@
                 font-size: 2.5vw;
             }
 
-            .pink {
-                height: 40vh;
+            .col-banner-biasa {
+                align-content: center;
             }
 
-            .lihat-semua {
+            .banner {
+                width: 15vh;
+            }
+
+            .judul-banner {
                 font-size: 5vw;
             }
 
-            .lihat-koleksi {
-                font-size: 3.4vw;
+            .nama-pembuat {
+                font-size: 1.5vw;
+                margin-bottom: 2vw
             }
 
-            .lihat-sekarang {
+            .isi-banner {
                 font-size: 1.5vw;
-                width: max-content;
+            }
+
+            .tombol-banner {
+                font-size: 1.5vw;
+            }
+
+            .wadah-banner {
+                margin-left: -25vw;
+                align-content: center
+            }
+
+            .detail {
+                font-size: 0.5vw;
             }
 
             .modal-detail {
@@ -132,25 +149,38 @@
                 font-size: 1vw;
             }
 
-            .pink {
-                min-height: 30vw;
-            }
-
             .bab {
                 font-size: 1vw;
             }
 
-            .lihat-semua {
-                font-size: 3vw;
-            }
-
-            .lihat-koleksi {
-                font-size: 2vw;
-            }
-
-            .lihat-sekarang {
-                font-size: 1vw;
+            .banner {
                 width: max-content;
+            }
+
+            .judul-banner {
+                font-size: 2.5vw;
+            }
+
+            .nama-pembuat {
+                font-size: 0.5vw;
+                margin-bottom: 20px;
+            }
+
+            .isi-banner {
+                font-size: 1vw;
+            }
+
+            .tombol-banner {
+                font-size: 1vw;
+            }
+
+            .wadah-banner {
+                margin-left: -44vw;
+                align-content: center
+            }
+
+            .detail {
+                font-size: 1vw;
             }
 
             .modal-row {
@@ -199,6 +229,7 @@
                 margin-left: -20vw;
                 align-content: center
             }
+
         }
     </style>
 </head>
@@ -241,154 +272,87 @@
             </div>
         </div>
     </nav>
-
-    {{-- Carousel --}}
-    <div id="carouselExampleCaptions" class="carousel slide">
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
-                aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-                aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-                aria-label="Slide 3"></button>
-        </div>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="img/home/HERO-FULL.png" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="img/home/carouselDua.png" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="img/home/carouselTiga.png" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                </div>
-            </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
-    {{-- Carousel --}}
-
-    {{-- Kategori --}}
-    <div class="container-md mt-5">
-        <div class="row text-center align-center">
-            <p class="fs-3 fw-semibold">Baca Sesuai Kategori</p>
-        </div>
+    {{-- banner --}}
+    <div class="container-md mt-3">
         <div class="row align-center">
-            <div class="col-sm">
+            <div class="col">
                 <div class="card mb-3 p-3"
-                    style="width: 100%; background: linear-gradient(to right top, #DB2D31, #8C0003)">
+                    style="width: 100%; background: linear-gradient(to right top, #273F62, #020600)">
                     <div class="row g-0">
-                        <div class="col align-content-center">
+                        <div class="col col-banner-biasa ps-2" style="">
+                            <img src="img/home/ensiklopedia.png" class="img-fluid banner" alt="...">
+                        </div>
+                        <div class="col wadah-banner">
                             <div class="card-body">
-                                <img src="img/home/five-star.png" class="img-fluid w-75" alt="">
-                                <h4 class="card-title text-white w-100">CERPEN</h4>
+                                <h5 class="card-title text-white w-auto judul-banner">Judul Bukunya</h5>
+                                    <h6 class="text-white-50 nama-pembuat">By : Nama Pembuat</h6>
+                                    <p class="text-white-50 isi-banner">Kegelapan yang pekat semakin mendekat.
+                                        Mengisahkan tentang kehidupan seorang pemburu hantu legendaris yang menangkap
+                                        dan memusnahkan para hantu setiap ada kesempatan</p>
 
-                                <button type="button" class="btn btn-submit opacity-75 mt-3"
-                                    style="color: #FFFFFF; background-color: #111111; width: min-content">Jelajahi</button>
+                                    <button type="button"
+                                        class="btn btn-submit opacity-75 mt-3 w-100 text-white tombol-banner"
+                                        style="background-color: #F1592B; width: fit-content">Baca
+                                        Sekarang <i class="bi bi-arrow-right ms-3" style=""></i></button>
                             </div>
-                        </div>
-                        <div class="col text-center" style="align-content: center">
-                            <img src="img/home/cerpen.png" class="img-fluid w-75" alt="...">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm">
-                <div class="card mb-3 p-3"
-                    style="width: 100%; background: linear-gradient(to right top, #74AD52, #2D6F06)">
-                    <div class="row g-0">
-                        <div class="col align-content-center">
-                            <div class="card-body">
-                                <img src="img/home/four-star.png" class="img-fluid w-75" alt="">
-                                <h4 class="card-title text-white w-100">NOVEL</h4>
-
-                                <button type="button" class="btn btn-submit opacity-75 mt-3"
-                                    style="color: #FFFFFF; background-color: #111111; width: min-content">Jelajahi</button>
-                            </div>
-                        </div>
-                        <div class="col text-center" style="align-content: center">
-                            <img src="img/home/novel.png" class="img-fluid w-75" alt="...">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl">
-                <div class="card mb-3 p-3"
-                    style="width: 100%; background: linear-gradient(to right top, #153E76, #001B41)">
-                    <div class="row g-0">
-                        <div class="col align-content-center">
-                            <div class="card-body">
-                                <img src="img/home/four-star.png" class="img-fluid w-75" alt="">
-                                <h5 class="card-title text-white w-auto">ENSIKLOPEDIA</h5>
-
-                                <button type="button" class="btn btn-submit opacity-75 mt-3"
-                                    style="color: #FFFFFF; background-color: #111111; width: min-content">Jelajahi</button>
-                            </div>
-                        </div>
-                        <div class="col text-center" style="align-content: center">
-                            <img src="img/home/ensiklopedia.png" class="img-fluid w-75" alt="...">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        {{-- Kategori --}}
-        {{-- Baca semua --}}
-        <div class="container-md mt-5">
-            <div class="row pink" style="min-height: 30vw;background-color: #FBDBE8">
-                <div class="col-5" style="align-content: center; padding-left: 10%">
-                    <h1 class="fw-bolder lihat-semua">Lihat Semua</h1>
-                    <h3 class="fs-auto lihat-koleksi">Koleksi Buku!</h3>
-                    <button type="button" class="btn btn-dark rounded-0 px-3 mt-4 lihat-sekarang">Lihat Sekarang <i
-                            class="bi bi-arrow-right ms-3" style=""></i></button>
-                </div>
-                <div class="col-7" style="align-content: center; text-align: center">
-                    <img class="img-fluid" style="min-width: 20vh; max-width: 30vw" src="img/home/lihat-semua.png"
-                        alt="">
-                </div>
-            </div>
+    </div>
+    {{-- banner --}}
+    {{-- buku terbaru --}}
+    <div class="container-xl mt-5">
+        <div class="row text-start align-center">
+            <p class="fs-3 fw-semibold">Buku Terbaru</p>
         </div>
-        {{-- Baca semua --}}
-        {{-- buku terbaru --}}
-        <div class="container-xl mt-5">
-            <div class="row text-start align-center">
-                <p class="fs-3 fw-semibold">Buku Terbaru</p>
-            </div>
-            <div class="row">
-                <table class="">
-                    <tr style="align-content: center">
-                        <th>
-                            <div class="card border-0" style="width: 10vw;">
-                                <img src="img/home/cerpen.png" class="card-img-top mb-2" alt="...">
-                                <h6 class="card-title fw-lighter fst-italic" style="font-size: 1vw">By. Nama Pembuat
-                                </h6>
-                                <h4 class="card-title fw-bold" style="font-size: 1.7vw">Judul Buku</h4>
-                                <button type="button"
-                                    class="btn btn-primary w-100 border-0 rounded-0 mt-2 modal-detail"
-                                    style="background-color: #F1592B;" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal">
-                                    Lihat Detail
-                                </button>
-                            </div>
-                        </th>
-                    </tr>
-                </table>
-            </div>
+        <div class="row align-content-end">
+            <table class="" style="">
+                <tr>
+                    <th>
+                        <div class="card border-0" style="width: 10vw;">
+                            <img src="img/home/cerpen.png" class="card-img-top mb-2" alt="...">
+                            <h6 class="card-title fw-lighter fst-italic" style="font-size: 1vw">By. Nama Pembuat
+                            </h6>
+                            <h4 class="card-title fw-bold" style="font-size: 1.7vw">Judul Buku</h4>
+                            <button type="button" class="btn btn-primary w-100 border-0 rounded-0 mt-2 detail"
+                                style="background-color: #F1592B;" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">
+                                Lihat Detail
+                            </button>
+                        </div>
+                    </th>
+                </tr>
+            </table>
         </div>
     </div>
     {{-- buku terbaru --}}
+    {{-- semua buku --}}
+    <div class="container-xl mt-5">
+        <div class="row text-start align-center">
+            <p class="fs-3 fw-semibold">Semua Buku</p>
+        </div>
+        <div class="row align-content-end">
+            <table class="" style="">
+                <tr>
+                    <th>
+                        <div class="card border-0" style="width: 10vw;">
+                            <img src="img/home/cerpen.png" class="card-img-top mb-2" alt="...">
+                            <h6 class="card-title fw-lighter fst-italic" style="font-size: 1vw">By. Nama Pembuat
+                            </h6>
+                            <h4 class="card-title fw-bold" style="font-size: 1.7vw">Judul Buku</h4>
+                            <button type="button" class="btn btn-primary w-100 border-0 rounded-0 mt-2 detail"
+                                style="background-color: #F1592B;" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">
+                                Lihat Detail
+                            </button>
+                        </div>
+                    </th>
+                </tr>
+            </table>
+        </div>
+    </div>
     {{-- modal --}}
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -501,9 +465,8 @@
 
 </html>
 
-{{-- Perbaikan home --}}
+{{-- Perbaikan kategori --}}
 {{-- sesuaikan tebal tipis huruf --}}
-{{-- Gambar pada lihat semua udah diubah di fiigma, tapi word belum --}}
-{{-- Contact jadi kontak, di word belum --}}
-{{-- Daftar buku belum pakai db --}}
+{{-- Belum pakai data pada banner --}}
+
 {{-- about --}}

@@ -23,6 +23,18 @@ Route::get('/', function () {
 Route::get('/home', function () {
     return view('home');
 });
+Route::get('/kategori', function () {
+    return view('kategori');
+});
+Route::get('/semua-buku', function () {
+    return view('semua-buku');
+});
+Route::get('/koleksi', function () {
+    return view('koleksi');
+});
+Route::get('/tambah-buku', function () {
+    return view('tambah-buku');
+});
 Route::get('/baca', function () {
     return view('pageBaca');
 });
