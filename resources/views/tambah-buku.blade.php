@@ -92,6 +92,7 @@
         }
     </style>
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg  py-4">
         <div class="container-md">
@@ -128,7 +129,8 @@
                         placeholder="Cari berdasarkan judul buku.." aria-label="cari" aria-describedby="button-addon2">
                     <button class="btn bg-light" type="button" id="button-addon2"><i class="bi bi-search"></i></button>
                 </div>
-                <div class="nav-link logout"><a href="" style="text-decoration: none; color: black">Logout</a></div>
+                <div class="nav-link logout"><a href="" style="text-decoration: none; color: black">Logout</a>
+                </div>
             </div>
         </div>
     </nav>
@@ -138,10 +140,10 @@
         <div class="col mt-5">
             <form action="/mypost/quottime" method="POST" enctype="multipart/form-data">
                 @csrf
-                <h4 class="text-header mb-4">Buat Quotes</h4>
+                <h4 class="text-header mb-4">Buat Buku</h4>
                 <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Tagar</label>
-                    <input type="text" placeholder="Buat Tagar..." name="tagar"
+                    <label for="exampleFormControlInput1" class="form-label">Judul</label>
+                    <input type="text" placeholder="Masukkan Judul..." name="tagar"
                         class="form-control @error('tagar') is-invalid @enderror"
                         style="background: rgba(255, 255, 255, 0.20);
         backdrop-filter: blur(4px);
@@ -154,7 +156,21 @@
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="isi" class="form-label">Isi Quote</label>
+                    <label for="exampleFormControlInput1" class="form-label">Nama Pembuat</label>
+                    <input type="text" placeholder="Masukkan Nama..." name="tagar"
+                        class="form-control @error('tagar') is-invalid @enderror"
+                        style="background: rgba(255, 255, 255, 0.20);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.18);"
+                        autofocus required value="{{ old('tagar') }}" />
+                    @error('tagar')
+                        <p class="text-danger">{{ $message }}</p>
+                    @enderror
+                </div>
+                <div class="mb-3">
+                    <label for="isi" class="form-label">Isi Buku</label>
                     @error('isi')
                         <p class="text-danger">{{ $message }}</p>
                     @enderror
@@ -168,7 +184,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="image" class="form-label">Upload Foto</label>
+                    <label for="image" class="form-label">Upload Cover</label>
                     <img alt="" class="img-preview img-fluid mb-3 col-sm-5">
                     <input type="file" class="form-control-buat @error('gambar') is-invalid @enderror"
                         id="image" name="gambar" required onchange="previewImage()" />
