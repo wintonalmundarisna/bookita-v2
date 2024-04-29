@@ -45,4 +45,6 @@ Route::get('/semua-buku', function () {
 Route::get('/baca', function () {
     return view('pageBaca');
 });
-
+Route::get('/about', function () {
+    return view('about-me');
+});
