@@ -57,23 +57,6 @@
             <div class="row">
                 <div class="col-md-6 my-auto">
 
-                    {{-- Pemberitahuan ketika berhsil register --}}
-                    @if (session()->has('success'))
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <strong>{{ session('success') }}</strong>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                aria-label="Close"></button>
-                        </div>
-                    @endif
-
-                    @if (session()->has('hasError'))
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <strong>{{ session('hasError') }}</strong>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                aria-label="Close"></button>
-                        </div>
-                    @endif
-                    {{-- Pemberitahuan ketika berhsil register --}}
                     
                     <div class="col-sm-6 text-black">
 
@@ -81,25 +64,46 @@
                             <img src="logo.png" class="w-25" alt="">
                         </div>
 
-                        <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
+                        {{-- Pemberitahuan ketika berhsil register atau login --}}
+                        @if (session()->has('success'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <strong>{{ session('success') }}</strong>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                            </div>
+                        @endif
+    
+                        @if (session()->has('hasError'))
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <strong>{{ session('hasError') }}</strong>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                            </div>
+                        @endif
+                        {{-- Pemberitahuan ketika berhsil register atau login --}}
+                        <div class="d-flex align-items-center h-custom-2 px-4 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
 
-                            <form style="width: 23rem;" action="/" method="get">
-                                <h3 class="fw-bold mb-3 pb-3" style="letter-spacing: 1px;">Sign in</h3>
-                                <p>if you don't have an account register</p>
-                                <p>you can <a href="#!" class="link-warning">Register here !</a></p>
+                            <form style="width: 23rem;" action="/" method="post">
+                                @csrf
+                                <h3 class="fw-bold mb-3 pb-3" style="letter-spacing: 1px;">Masuk Akun</h3>
+                                <p>Jika kamu belum memiliki akun terdaftar</p>
+                                <p>Kamu bisa <a href="/register"
+                                        style="text-decoration: none; color: #FF5D0A;"
+                                        class="link-warning">Daftar disini !</a></p>
                                 <div class="form-outline mb-1">
                                     <label for="exampleInputEmail1" class="form-label fw-bold mt-3">Email</label>
                                     <input type="email" class="form-control" id="exampleInputEmail1"
                                         placeholder="Enter you email address" name="email"></input>
                                 </div>
                                 <div class="form-outline mb-1">
-                                    <label for="exampleInputPassword1" class="form-label fw-bold mt-3">Password</label>
+                                    <label for="exampleInputPassword1" class="form-label fw-bold mt-3">Kata
+                                        Sandi</label>
                                     <input placeholder="Enter you password" type="password" class="form-control"
                                         name="password" id="exampleInputPassword1">
                                 </div>
                                 <div class="pt-1 mb-4">
                                     <button class="btn btn-warning btn-md rounded-pill fw-bold"
-                                        type="button">Login</button>
+                                        type="submit">Masuk</button>
                                 </div>
                             </form>
                         </div>

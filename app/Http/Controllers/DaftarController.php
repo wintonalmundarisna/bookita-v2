@@ -14,8 +14,8 @@ class DaftarController extends Controller
 
     public function daftar(Request $request) {
         $validatedData = $request->validate([
-            'nama'      => 'required|min:3|max:255',
             'email'     => 'required|email:dns|unique:users',
+            'name'      => 'required|min:3|max:255',
             'password'  => 'required|min:3|max:255'
         ]);
 

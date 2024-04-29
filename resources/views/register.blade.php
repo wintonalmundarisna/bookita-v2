@@ -66,7 +66,8 @@
 
                     <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
 
-                        <form style="width: 23rem;" action="/register" method="post">
+                        <form action="/register" method="POST" style="width: 23rem;">
+                            @csrf
                             <h3 class="fw-bold mb-3 pb-3" style="letter-spacing: 1px;">Daftar Akun</h3>
                             <p class="fw-semibold">Sudah punya akun ? <a href="/" class=""
                                     style="text-decoration: none; color: #FF5D0A">Login disini</a></p>
@@ -84,10 +85,7 @@
                                     class="form-control form-control-sm " />
                             </div>
 
-                            <div class="pt-1 mt-4">
-                                <button class="btn btn-warning btn-md rounded-pill fw-bold"
-                                    type="button">Daftar</button>
-                            </div>
+                            <button class="btn btn-warning rounded-pill fw-bold" type="submit">Daftar</button>
                         </form>
 
                     </div>

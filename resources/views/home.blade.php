@@ -12,7 +12,7 @@
 
     {{-- Vite buat hot reload --}}
     @vite([])
-    <title>Home</title>
+    <title>bookita | Tambah Wawasan-mu Disini</title>
 
     <style>
         html {
@@ -229,7 +229,7 @@
                         <a class="nav-link active" aria-current="page" href="#">Kontak</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Koleksi</a>
+                        <a class="nav-link active" aria-current="page" href="/koleksi">Koleksi</a>
                     </li>
                 </ul>
                 <div class="input-group d-md-flex">
