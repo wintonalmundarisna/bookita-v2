@@ -108,9 +108,9 @@
                             </form>
                         </div>
                     </div>
-                    <div class="col-sm-6 py-10 d-none d-sm-block pt-5">
-                        <img src="login.png" alt="Login" class="w-100 vh-95">
-                    </div>
+                </div>
+                <div class="col-sm-6 py-10 d-none d-sm-block pt-5">
+                    <img src="login.png" alt="Login" class="w-100 vh-95">
                 </div>
             </div>
     </section>
