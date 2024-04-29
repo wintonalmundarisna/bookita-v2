@@ -66,11 +66,7 @@
             }
         }
 
-       .image-baca{
-        width: 100%;
-  max-width: 70%;
-  height: auto;
-       }
+       
 
        .fillContent{
         font-size: 2 vw;
@@ -123,7 +119,7 @@
 
     <section class="main-content text-center">
         <image class="main-image">
-            <img src="bacabuku.png" class="image-baca rounded" alt="">
+            <img src="bacabuku.png" class="image-baca w-100" alt="">
         </image>
 
         <h1 class="text-center pt-5">The Butcher And The Wren</h1>
@@ -131,7 +127,7 @@
         
         
     </section>
-    <div class="fillContent">
+    <div class="container-xl p-4">
         <p class="first">
             Kegelapan yang pekat semakin mendekat. Mengisahkan tentang kehidupan seorang pemburu hantu legendaris yang menangkap dan memusnahkan para hantu setiap ada kesempatan. Kegelapan yang pekat semakin mendekat. Mengisahkan tentang kehidupan seorang pemburu hantu legendaris yang menangkap dan memusnahkan para hantu setiap ada kesempatan. Kegelapan yang pekat semakin mendekat. Mengisahkan tentang kehidupan seorang pemburu hantu legendaris yang menangkap dan memusnahkan para hantu setiap ada kesempatan
         </p>
