@@ -94,7 +94,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg  py-4">
+    <nav class="navbar navbar-expand-lg py-4">
         <div class="container-md">
             <a class="navbar-brand" href="#">
                 <p class="h2 fw-bold mb-0" style="color: #F1592B;">booKita</p>
@@ -152,7 +152,21 @@ border: 1px solid rgba(255, 255, 255, 0.18);"
                         <option name="kategori" selected value="cerpen">Cerpen</option>
                         <option name="kategori" value="novel">Novel</option>
                         <option name="kategori" value="ensiklopedia">Ensiklopedia</option>
-                      </select>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Sinopsis</label>
+                    <input type="text" placeholder="Sinopsis tidak lebih dari 500 kata..." name="sinopsis"
+                        class="form-control @error('sinopsis') is-invalid @enderror"
+                        style="background: rgba(255, 255, 255, 0.20);
+backdrop-filter: blur(4px);
+-webkit-backdrop-filter: blur(4px);
+border-radius: 10px;
+border: 1px solid rgba(255, 255, 255, 0.18);"
+                        autofocus required value="{{ old('sinopsis') }}" />
+                    @error('sinopsis')
+                        <p class="text-danger">{{ $message }}</p>
+                    @enderror
                 </div>
                 <div class="mb-3">
                     <label for="isi" class="form-label">Isi Buku</label>
@@ -172,8 +186,8 @@ border: 1px solid rgba(255, 255, 255, 0.18);"
                 <div class="mb-3">
                     <label for="image" class="form-label">Upload Cover</label>
                     <img alt="" class="img-preview img-fluid mb-3 col-sm-5">
-                    <input type="file" class="form-control-buat @error('gambar') is-invalid @enderror" id="image"
-                        name="gambar" required onchange="previewImage()" />
+                    <input type="file" class="form-control-buat @error('gambar') is-invalid @enderror"
+                        id="image" name="gambar" required onchange="previewImage()" />
                     @error('gambar')
                         <p class="text-danger">{{ $message }}</p>
                     @enderror

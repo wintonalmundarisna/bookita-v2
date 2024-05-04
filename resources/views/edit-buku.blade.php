@@ -88,7 +88,6 @@
             .bab {
                 font-size: 1vw;
             }
-
         }
     </style>
 </head>
@@ -129,12 +128,14 @@
     <div class="container-md" style="margin-top: 5vw;">
         <div class="col mt-5">
             {{-- form --}}
-            <form action="/koleksi" method="POST" enctype="multipart/form-data">
+            <form action="/koleksi/{{ $data->id }}" method="POST" enctype="multipart/form-data">
+                @method('put')
                 @csrf
                 <h4 class="text-header mb-4">Buat Buku</h4>
+                <input id="nama" type="hidden" name="nama" value="{{ old('nama', $data->nama) }}" required>
                 <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Judul</label>
-                    <input type="text" placeholder="Buat Judul..." name="judul"
+                    <label for="judul" class="form-label">Judul</label>
+                    <input type="text" placeholder="Buat Judul..." name="judul" id="judul"
                         class="form-control @error('judul') is-invalid @enderror"
                         style="background: rgba(255, 255, 255, 0.20);
 backdrop-filter: blur(4px);
@@ -147,23 +148,26 @@ border: 1px solid rgba(255, 255, 255, 0.18);"
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Nama Pembuat</label>
-                    <input type="text" placeholder="Masukkan Nama..." name="nama"
-                        class="form-control @error('nama') is-invalid @enderror"
+                    <label for="sinopsis" class="form-label">Sinopsis</label>
+                    <input type="text" id="sinopsis" placeholder="Sinopsis tidak lebih dari 500 kata..."
+                        name="sinopsis" class="form-control @error('sinopsis') is-invalid @enderror"
                         style="background: rgba(255, 255, 255, 0.20);
         backdrop-filter: blur(4px);
         -webkit-backdrop-filter: blur(4px);
         border-radius: 10px;
         border: 1px solid rgba(255, 255, 255, 0.18);"
-                        autofocus required value="{{ old('nama') }}" />
-                    @error('nama')
+                        autofocus required value="{{ old('sinopsis', $data->sinopsis) }}" />
+                    @error('sinopsis')
                         <p class="text-danger">{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="mb-3">
                     <label for="kategori" class="form-label">Kategori</label>
-                    <select class="form-select bg-light opacity-75" aria-label="Default select example" name="kategori">
-                        <option name="kategori" selected value="cerpen">Cerpen</option>
+                    <select class="form-select bg-light opacity-75" aria-label="Default select example" name="kategori"
+                        id="kategori">
+                        <option name="kategori" selected value="{{ old('kategori', $data->kategori) }}">
+                            {{ $data->kategori }}</option>
+                        <option name="kategori" value="cerpen">Cerpen</option>
                         <option name="kategori" value="novel">Novel</option>
                         <option name="kategori" value="ensiklopedia">Ensiklopedia</option>
                     </select>
@@ -173,7 +177,8 @@ border: 1px solid rgba(255, 255, 255, 0.18);"
                     @error('isi')
                         <p class="text-danger">{{ $message }}</p>
                     @enderror
-                    <input id="isi" type="hidden" name="isi" value="{{ old('isi') }}" required>
+                    <input id="isi" type="hidden" name="isi" value="{{ old('isi', $data->isi) }}"
+                        required>
                     <trix-editor input="isi"
                         style="background: rgba(255, 255, 255, 0.20);
         backdrop-filter: blur(4px);
@@ -184,10 +189,17 @@ border: 1px solid rgba(255, 255, 255, 0.18);"
                 </div>
 
                 <div class="mb-3">
-                    <label for="image" class="form-label">Upload Cover</label>
-                    <img alt="" class="img-preview img-fluid mb-3 col-sm-5">
+                    <label for="image" class="form-label">Cover</label>
+                    <input type="hidden" name="oldImage" value="{{ $data->gambar }}">
+                    @if ($data->gambar)
+                        <img src="{{ asset('img/koleksi/' . $data->gambar) }}" alt=""
+                            class="img-preview img-fluid mb-3 col-sm-5 d-block">
+                    @else
+                        <img alt="{{ $data->gambar }}" class="img-preview img-fluid mb-3 col-sm-5">
+                    @endif
                     <input type="file" class="form-control-buat @error('gambar') is-invalid @enderror"
-                        id="image" name="gambar" required onchange="previewImage()" />
+                        id="image" name="gambar" value="{{ old('gambar', $data->gambar) }}"
+                        onchange="previewImage()" />
                     @error('gambar')
                         <p class="text-danger">{{ $message }}</p>
                     @enderror

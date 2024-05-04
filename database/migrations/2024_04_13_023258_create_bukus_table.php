@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->string('judul')->unique();
             $table->string('nama');
             $table->string('kategori');
+            $table->text('sinopsis');
             $table->text('isi');
             $table->string('gambar')->unique();
             $table->timestamp('published_at')->nullable();

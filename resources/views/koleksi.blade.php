@@ -90,7 +90,7 @@
                 <span style="display: inline-flex; gap: 1.5vw; margin-bottom: 2vw;">
                     <h3 class="fs-4 fw-bold pt-1">Koleksi Bukumu</h3>
                     <button type="button" class="btn btn-success py-2 fw-bolder"><a href="/tambah-buku"
-                            style="text-decoration: none; color: white;">Tambah Koleksi Buku</a></button>
+                            style="text-decoration: none; color: white">Tambah Koleksi Buku</a></button>
                 </span>
                 @if (session()->has('success'))
                     <div class="alert alert-success alert-dismissible fade show" style="margin-bottom: 2vw;" role="alert">
@@ -100,11 +100,11 @@
                 @endif
                 <thead>
                     <tr>
-                        <th class="fs-5 fw-bolder">Cover</th>
-                        <th class="fs-5 fw-bolder">Judul Buku</th>
-                        {{-- <th class="fs-5 fw-bolder">Nama Pembuat</th> --}}
-                        <th class="fs-5 fw-bolder">Kategori</th>
-                        <th class="fs-5 fw-bolder" style="text-align: center;">
+                        <th class="fs-6 fw-bolder">Cover</th>
+                        <th class="fs-6 fw-bolder">Judul Buku</th>
+                        {{-- <th class="fs-6 fw-bolder">Nama Pembuat</th> --}}
+                        <th class="fs-6 fw-bolder">Kategori</th>
+                        <th class="fs-6 fw-bolder" style="text-align: center;">
                             Aksi
                         </th>
                     </tr>
@@ -116,7 +116,7 @@
                             <td>
                                 @if ($d->gambar)
                                     <img src="{{ asset('/img/koleksi/' . $d->gambar) }}" class="img img-fluid"
-                                        style="width: 3vw;" alt="">
+                                        style="width: 10vh;" alt="">
                                 @else
                                     <img src="img/home/cerpen.png" class="img img-fluid" style="width: 3vw;" alt="">
                                 @endif
@@ -136,7 +136,6 @@
                                             <button type="submit" class="border-0 bg-white text-success">
                                                 EDIT
                                             </button>
-
                                         </form>
                                     </div>
                                     <div class="col">
@@ -161,40 +160,32 @@
     {{-- Table --}}
     {{-- modal --}}
     @foreach ($data as $d)
-        <div class="modal fade" id="exampleModal{{ $d->id }}" tabindex="-1"
-            aria-labelledby="exampleModalLabel{{ $d->id }}" aria-hidden="true">
+        <div class="modal fade" id="exampleModal{{ $d->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content" style="linear-gradient(to right top, #DB2D31, #8C0003)">
                     {{-- banner --}}
                     <div class="row align-center">
                         <div class="col">
-                            <div class="card p-3"
-                                style="width: 100%; background: linear-gradient(to right top, #273F62, #020600)">
+                            <div class="card mb-3 p-3"
+                                style="width: 100%; height: 100%; background: linear-gradient(to right top, #273F62, #020600)">
                                 <div class="row g-0">
-                                    <div class="col modal-col-banner ps-2" style="">
-                                        <img src="img/koleksi/{{ $d->gambar }}"
-                                            class="img-fluid modal-gambar-banner" alt="...">
+                                    <div class="col-md-4" style="align-self: center;">
+                                        <div class="gambar-banner-biasa"
+                                            style="background: url('{{ asset('/img/koleksi/' . $d->gambar) }}'); height: 240px; width: auto; background-size: cover; background-position: center; background-repeat: no-repeat">
+                                        </div>
                                     </div>
-                                    <div class="col modal-wadah-banner">
+                                    <div class="col-md-8">
                                         <div class="card-body">
-                                            <h1 class="card-title text-white w-auto modal-judul-banner">
-                                                {{ $d->judul }}
-                                                </h5>
-                                                <h6 class="text-white-50 modal-nama-pembuat">By : {{ $d->nama }}
-                                                </h6>
-                                                <p class="text-white-50 modal-isi-banner">{{ $d->isi }}</p>
-                                                <div class="row modal-row" style="justify-content: space-between">
-                                                    <button type="button"
-                                                        class="btn btn-submit px-5 opacity-75 mt-3 text-white modal-tombol-banner"
-                                                        data-bs-dismiss="modal" style="background-color: #F1592B;"><i
-                                                            class="bi bi-arrow-left modal-kembali"></i> Kembali
-                                                    </button>
-                                                    <button type="button"
-                                                        class="btn btn-submit px-5 opacity-75 mt-3 text-white modal-tombol-banner"
-                                                        style="background-color: #F1592B;">Baca
-                                                        Sekarang <i class="bi bi-arrow-right modal-baca-sekarang"
-                                                            style=""></i></button>
-                                                </div>
+                                            <h2 class="card-title text-white">{{ $d->judul }}</h2>
+                                            <p class="card-text text-white-50"><small>By :
+                                                    {{ $d->nama }}</small></p>
+                                            <p class="card-text text-white-50">{{ $d->sinopsis }}</p>
+                                            <button type="button"
+                                                class="btn btn-submit opacity-75 mt-3 w-100 text-white"
+                                                style="background-color: #F1592B; width: fit-content">Baca
+                                                Sekarang <i class="bi bi-arrow-right ms-3" style=""></i>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -206,7 +197,6 @@
             </div>
         </div>
     @endforeach
-
     {{-- modal --}}
     {{-- footer --}}
     @include('layouts.footer')

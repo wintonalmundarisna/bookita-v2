@@ -12,6 +12,7 @@ class HomeController extends Controller
     {
         return view('/home', [
             'data' => Buku::get(),
+            'active' => 'Home'
         ]);
     }
 

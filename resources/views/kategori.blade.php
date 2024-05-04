@@ -12,7 +12,7 @@
 
     {{-- Vite buat hot reload --}}
     @vite([])
-    <title>Belum Ada</title>
+    <title>{{ $judul }}</title>
 
     <style>
         html {
@@ -42,36 +42,6 @@
 
             .bab {
                 font-size: 2.5vw;
-            }
-
-            .col-banner-biasa {
-                align-content: center;
-            }
-
-            .banner {
-                width: 15vh;
-            }
-
-            .judul-banner {
-                font-size: 5vw;
-            }
-
-            .nama-pembuat {
-                font-size: 1.5vw;
-                margin-bottom: 2vw
-            }
-
-            .isi-banner {
-                font-size: 1.5vw;
-            }
-
-            .tombol-banner {
-                font-size: 1.5vw;
-            }
-
-            .wadah-banner {
-                margin-left: -25vw;
-                align-content: center
             }
 
             .detail {
@@ -141,6 +111,7 @@
                 width: 80px;
             }
 
+
             .jadikan {
                 font-size: 2.5vw;
             }
@@ -151,32 +122,6 @@
 
             .bab {
                 font-size: 1vw;
-            }
-
-            .banner {
-                width: max-content;
-            }
-
-            .judul-banner {
-                font-size: 2.5vw;
-            }
-
-            .nama-pembuat {
-                font-size: 0.5vw;
-                margin-bottom: 20px;
-            }
-
-            .isi-banner {
-                font-size: 1vw;
-            }
-
-            .tombol-banner {
-                font-size: 1vw;
-            }
-
-            .wadah-banner {
-                margin-left: -44vw;
-                align-content: center
             }
 
             .detail {
@@ -235,226 +180,157 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-white py-4">
-        <div class="container-md">
-            <a class="navbar-brand" href="#"><img src="bookita.PNG" alt="" class="navbar-image"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 fw-semibold">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Kategori
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Cerpen</a></li>
-                            <li><a class="dropdown-item" href="#">Novel</a></li>
-                            <li><a class="dropdown-item" href="#">Ensiklopedia</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Kontak</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Koleksi</a>
-                    </li>
-                </ul>
-                <div class="input-group d-md-flex">
-                    <input type="text" class="form-control bg-light border-0 rounded-0"
-                        placeholder="Cari berdasarkan judul buku.." aria-label="cari" aria-describedby="button-addon2">
-                    <button class="btn bg-light" type="button" id="button-addon2"><i class="bi bi-search"></i></button>
-                </div>
-                <div class="logout fw-semibold">Logout</div>
-            </div>
-        </div>
-    </nav>
+    @include('layouts.navbar')
     {{-- banner --}}
     <div class="container-md mt-3">
-        <div class="row align-center">
-            <div class="col">
-                <div class="card mb-3 p-3"
-                    style="width: 100%; background: linear-gradient(to right top, #273F62, #020600)">
-                    <div class="row g-0">
-                        <div class="col col-banner-biasa ps-2" style="">
-                            <img src="img/home/ensiklopedia.png" class="img-fluid banner" alt="...">
-                        </div>
-                        <div class="col wadah-banner">
-                            <div class="card-body">
-                                <h5 class="card-title text-white w-auto judul-banner">Judul Bukunya</h5>
-                                    <h6 class="text-white-50 nama-pembuat">By : Nama Pembuat</h6>
-                                    <p class="text-white-50 isi-banner">Kegelapan yang pekat semakin mendekat.
-                                        Mengisahkan tentang kehidupan seorang pemburu hantu legendaris yang menangkap
-                                        dan memusnahkan para hantu setiap ada kesempatan</p>
-
-                                    <button type="button"
-                                        class="btn btn-submit opacity-75 mt-3 w-100 text-white tombol-banner"
-                                        style="background-color: #F1592B; width: fit-content">Baca
-                                        Sekarang <i class="bi bi-arrow-right ms-3" style=""></i></button>
-                            </div>
-                        </div>
+        <div class="card mb-3 p-3" style="width: 100%; background: linear-gradient(to right top, #273F62, #020600)">
+            <div class="row g-0">
+                <div class="col-md-4" style="align-self: center;">
+                    <div class="gambar-banner-biasa"
+                        style="background: url('{{ asset('/img/koleksi/' . $data2->gambar) }}'); height: 240px; width: auto; background-size: cover; background-position: center; background-repeat: no-repeat">
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h2 class="card-title text-white">{{ $data2->judul }}</h2>
+                        <p class="card-text text-white-50"><small>By :
+                                {{ $data2->nama }}</small></p>
+                        @if ($data2->kategori === 'cerpen')
+                            <p class="card-text text-danger">
+                                <small><i>{{ $data2->kategori }}</i></small>
+                            </p>
+                        @endif
+                        @if ($data2->kategori === 'novel')
+                            <p class="card-text text-success">
+                                <small><i>{{ $data2->kategori }}</i></small>
+                            </p>
+                        @endif
+                        @if ($data2->kategori === 'ensiklopedia')
+                            <p class="card-text text-primary">
+                                <small><i>{{ $data2->kategori }}</i></small>
+                            </p>
+                        @endif
+                        <p class="card-text text-white-50">{{ $data2->sinopsis }}</p>
+                        <button type="button" class="btn btn-submit opacity-75 mt-3 w-100 text-white"
+                            style="background-color: #F1592B; width: fit-content">Baca
+                            Sekarang <i class="bi bi-arrow-right ms-3" style=""></i>
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     {{-- banner --}}
-    {{-- buku terbaru --}}
+    {{-- Semua Kategori --}}
     <div class="container-xl mt-5">
         <div class="row text-start align-center">
-            <p class="fs-3 fw-semibold">Buku Terbaru</p>
+            <p class="fs-3 fw-semibold">{{ $judul }}</p>
         </div>
         <div class="row align-content-end">
             <table class="" style="">
                 <tr>
                     <th>
-                        <div class="card border-0" style="width: 10vw;">
-                            <img src="img/home/cerpen.png" class="card-img-top mb-2" alt="...">
-                            <h6 class="card-title fw-lighter fst-italic" style="font-size: 1vw">By. Nama Pembuat
-                            </h6>
-                            <h4 class="card-title fw-bold" style="font-size: 1.7vw">Judul Buku</h4>
-                            <button type="button" class="btn btn-primary w-100 border-0 rounded-0 mt-2 detail"
-                                style="background-color: #F1592B;" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal">
-                                Lihat Detail
-                            </button>
-                        </div>
-                    </th>
-                </tr>
-            </table>
-        </div>
-    </div>
-    {{-- buku terbaru --}}
-    {{-- semua kategori --}}
-    <div class="container-xl mt-5">
-        <div class="row text-start align-center">
-            <p class="fs-3 fw-semibold">Semua Kategori</p>
-        </div>
-        <div class="row align-content-end">
-            <table class="" style="">
-                <tr>
-                    <th>
-                        <div class="card border-0" style="width: 10vw;">
-                            <img src="img/home/cerpen.png" class="card-img-top mb-2" alt="...">
-                            <h6 class="card-title fw-lighter fst-italic" style="font-size: 1vw">By. Nama Pembuat
-                            </h6>
-                            <h4 class="card-title fw-bold" style="font-size: 1.7vw">Judul Buku</h4>
-                            <button type="button" class="btn btn-primary w-100 border-0 rounded-0 mt-2 detail"
-                                style="background-color: #F1592B;" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal">
-                                Lihat Detail
-                            </button>
-                        </div>
-                    </th>
-                </tr>
-            </table>
-        </div>
-    </div>
-    {{-- modal --}}
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content" style="linear-gradient(to right top, #DB2D31, #8C0003)">
-                {{-- banner --}}
-                <div class="row align-center">
-                    <div class="col">
-                        <div class="card p-3"
-                            style="width: 100%; background: linear-gradient(to right top, #273F62, #020600)">
-                            <div class="row g-0">
-                                <div class="col modal-col-banner ps-2" style="">
-                                    <img src="img/home/ensiklopedia.png" class="img-fluid modal-gambar-banner"
-                                        alt="...">
+                        <div class="card-group gap-3">
+                            @foreach ($data->skip(1) as $d)
+                                <div class="card mb-5">
+                                    <div class="card-header"
+                                        style="background: url('{{ asset('/img/koleksi/' . $d->gambar) }}');background-size: cover; background-position: center; background-repeat: no-repeat; height: 250px; width: 100%">
+                                    </div>
+                                    <div class="card-body h-25 bg-body-secondary">
+                                        <h5 class="card-title">{{ $d->judul }}</h5>
+                                    </div>
+                                    <div class="card-body bg-body-secondary">
+                                        <small class="text-body-secondary">By. {{ $d->nama }}</small>
+                                        <br>
+                                        @if ($d->kategori === 'cerpen')
+                                            <p class="card-text text-danger">
+                                                <small><i>{{ $d->kategori }}</i></small>
+                                            </p>
+                                        @endif
+                                        @if ($d->kategori === 'novel')
+                                            <p class="card-text text-success">
+                                                <small><i>{{ $d->kategori }}</i></small>
+                                            </p>
+                                        @endif
+                                        @if ($d->kategori === 'ensiklopedia')
+                                            <p class="card-text text-primary">
+                                                <small><i>{{ $d->kategori }}</i></small>
+                                            </p>
+                                        @endif
+                                    </div>
+                                    <div class="card-body bg-body-secondary">
+                                        <button type="button" class="btn btn-primary w-100 border-0 rounded-0 mt-2"
+                                            style="background-color: #F1592B;" data-bs-toggle="modal"
+                                            data-bs-target="#exampleModal{{ $d->id }}">
+                                            Lihat Detail
+                                        </button>
+                                    </div>
                                 </div>
-                                <div class="col modal-wadah-banner">
-                                    <div class="card-body">
-                                        <h1 class="card-title text-white w-auto modal-judul-banner">Judul Bukunya
-                                            </h5>
-                                            <h6 class="text-white-50 modal-nama-pembuat">By : Nama Pembuat</h6>
-                                            <p class="text-white-50 modal-isi-banner">Kegelapan yang pekat semakin
-                                                mendekat.
-                                                Mengisahkan tentang kehidupan seorang pemburu hantu legendaris yang
-                                                menangkap
-                                                dan memusnahkan para hantu setiap ada kesempatan</p>
-                                            <div class="row modal-row" style="justify-content: space-between">
-                                                <button type="button"
-                                                    class="btn btn-submit px-5 opacity-75 mt-3 text-white modal-tombol-banner"
-                                                    style="background-color: #F1592B;"><i
-                                                        class="bi bi-arrow-left modal-kembali"></i> Kembali
-                                                </button>
-                                                <button type="button"
-                                                    class="btn btn-submit px-5 opacity-75 mt-3 text-white modal-tombol-banner"
-                                                    style="background-color: #F1592B;">Baca
-                                                    Sekarang <i class="bi bi-arrow-right modal-baca-sekarang"
-                                                        style=""></i></button>
-                                            </div>
+                            @endforeach
+                        </div>
+                    </th>
+                </tr>
+            </table>
+        </div>
+    </div>
+    {{-- Semua Kategori --}}
+    {{-- modal --}}
+    @foreach ($data as $d)
+        <div class="modal fade" id="exampleModal{{ $d->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content" style="linear-gradient(to right top, #DB2D31, #8C0003)">
+                    {{-- banner --}}
+                    <div class="row align-center">
+                        <div class="col">
+                            <div class="card mb-3 p-3"
+                                style="width: 100%; height: 100%; background: linear-gradient(to right top, #273F62, #020600)">
+                                <div class="row g-0">
+                                    <div class="col-md-4" style="align-self: center;">
+                                        <div class="gambar-banner-biasa"
+                                            style="background: url('{{ asset('/img/koleksi/' . $d->gambar) }}'); height: 240px; width: auto; background-size: cover; background-position: center; background-repeat: no-repeat">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h2 class="card-title text-white">{{ $d->judul }}</h2>
+                                            <p class="card-text text-white-50"><small>By :
+                                                    {{ $d->nama }}</small></p>
+                                            @if ($d->kategori === 'cerpen')
+                                                <p class="card-text text-danger">
+                                                    <small><i>{{ $d->kategori }}</i></small>
+                                                </p>
+                                            @endif
+                                            @if ($d->kategori === 'novel')
+                                                <p class="card-text text-success">
+                                                    <small><i>{{ $d->kategori }}</i></small>
+                                                </p>
+                                            @endif
+                                            @if ($d->kategori === 'ensiklopedia')
+                                                <p class="card-text text-primary">
+                                                    <small><i>{{ $d->kategori }}</i></small>
+                                                </p>
+                                            @endif
+                                            <p class="card-text text-white-50">{{ $d->sinopsis }}</p>
+                                            <button type="button"
+                                                class="btn btn-submit opacity-75 mt-3 w-100 text-white"
+                                                style="background-color: #F1592B; width: fit-content">Baca
+                                                Sekarang <i class="bi bi-arrow-right ms-3" style=""></i>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    {{-- banner --}}
                 </div>
-                {{-- banner --}}
             </div>
         </div>
-    </div>
+    @endforeach
     {{-- modal --}}
     {{-- footer --}}
-    <div class="container-fluid mt-5 text-white" style="background-color: #303030;">
-        <div class="container-xl foot">
-            <div class="row" style="padding-block: 10%;">
-                <div class="col-4" style="text-align: start">
-                    <h1 class="jadikan" style="">Jadikan bacaanmu menyenangkan bersama booKita</h1>
-                </div>
-                <div class="col-3 d-flex justify-content-end">
-                    <ul class="address">
-                        <li class="mb-3" style="list-style: none;">
-                            <h5 class="bab">Address</h5>
-                        </li>
-                        <li style="list-style: none">
-                            <p>Jalan Nangka</p>
-                        </li>
-                        <li style="list-style: none;">
-                            <p>Jaksel</p>
-                        </li>
-                        <li style="list-style: none">
-                            <p>Indonesia</p>
-                        </li>
-                        <li style="list-style: none;">
-                            <div class="row" style="width: max-content">
-                                <div class="col">
-                                    <i class="bi bi-facebook"></i>
-                                </div>
-                                <div class="col">
-                                    <i class="bi bi-twitter"></i>
-                                </div>
-                                <div class="col">
-                                    <i class="bi bi-youtube"></i>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-5 text-white" style="text-align: end">
-                    <div class="row">
-                        <h5 class="mb-3 bab">Kontak</h5>
-                    </div>
-                    <div class="row mb-3 d-flex justify-content-end" style="">
-                        <button type="btn" class="btn px-4 py-2 text-white bab"
-                            style="background-color: #F1592B; width: max-content;">bookita@gmail.com</button>
-                    </div>
-                    <div class="row">
-                        <h5 class="fw-semibold bab">+ 62 878 206 255 14</h5>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container-fluid bg-dark text-white p-3" style="text-align: center">
-        <h6 class="fw-light">All Right Reserverd. Copyright © booKita 2024 </h6>
-    </div>
+    @include('layouts.footer')
     {{-- footer --}}
 
     {{-- cdn bootstrap --}}

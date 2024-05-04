@@ -29,8 +29,6 @@ class LoginController extends Controller
         return back()->with('hasError', 'Login Gagal!');
     }
 
-
-
     public function logout()
     {
         Auth::logout();

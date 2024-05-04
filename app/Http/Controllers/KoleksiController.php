@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Buku;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 // use App\Http\Controllers\Response;
 use Redirect, Response;
+use Illuminate\Support\Facades\Storage;
 
 class KoleksiController extends Controller
 {
@@ -18,7 +18,8 @@ class KoleksiController extends Controller
     public function index()
     {
         return view('koleksi', [
-            'data' => Buku::where('user_id', auth()->user()->id)->get()
+            'data' => Buku::where('user_id', auth()->user()->id)->get(),
+            'active' => 'Koleksi'
         ]);
     }
 
@@ -38,8 +39,9 @@ class KoleksiController extends Controller
         $rules = [
             'judul' => 'required|max:200|unique:bukus',
             'kategori' => 'required',
-            'gambar' => 'image|file|max:2000',
-            'isi' => 'required|min:10'
+            'sinopsis' => 'required',
+            'isi' => 'required|min:10',
+            'gambar' => 'image|file|max:2000'
         ];
 
         $validatedData = $request->validate($rules);
@@ -48,6 +50,7 @@ class KoleksiController extends Controller
         $validatedData['judul'] = Str::limit(strip_tags($request->judul), 200);
         $validatedData['judul'] = preg_replace('#</?(div|/).*?>#is', '', $request->judul);
         $validatedData['nama'] = preg_replace('#</?(div|/).*?>#is', '', auth()->user()->name);
+        $validatedData['sinopsis'] = preg_replace('#</?div.*?>#is', '', $request->sinopsis);
         $validatedData['isi'] = preg_replace('#</?div.*?>#is', '', $request->isi);
         $data = Buku::create($validatedData);
 
@@ -84,6 +87,7 @@ class KoleksiController extends Controller
             abort(403);
         }
 
+        // dd($idBuku);
         return view('edit-buku', [
             'data' => $idBuku
         ]);
@@ -92,44 +96,49 @@ class KoleksiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Buku $buku)
+    public function update($id, Request $request, Buku $buku)
     {
+        $bukuId = $buku->findOrFail($id);
+        // dd($bukuId->id);
 
         $rules = [
-            'gambar' => 'image|file|max:2000',
-            'isi' => 'required'
+            'judul' => 'required',
+            'kategori' => 'required',
+            'sinopsis' => 'required',
+            'isi' => 'required|min:10',
+            'gambar' => 'image|file|max:2000'
         ];
 
-        if ($request->tagar != $buku->tagar) {
-            $rules['tagar'] = 'required|max:200|unique:bukus';
+        if ($request->judul != $bukuId->judul) {
+            $rules['judul'] = 'required|max:200|unique:bukus';
         }
 
         $input = $request->validate($rules);
 
         $input['user_id'] = auth()->user()->id;
-        $input['tagar'] = Str::limit(strip_tags($request->tagar), 200);
-        $input['tagar'] = preg_replace('#</?(div|/).*?>#is', '', $request->tagar);
+        $input['judul'] = Str::limit(strip_tags($request->judul), 200);
+        $input['judul'] = preg_replace('#</?(div|/).*?>#is', '', $request->judul);
+        $input['nama'] = Str::limit(strip_tags($request->nama), 200);
+        $input['sinopsis'] = preg_replace('#</?div.*?>#is', '', $request->sinopsis);
         $input['isi'] = preg_replace('#</?div.*?>#is', '', $request->isi);
+
 
         if ($image = $request->file('gambar')) {
             if ($request->oldImage) {
-                unlink('img/' . $buku->gambar);
+                unlink('img/koleksi/' . $request->oldImage);
             }
 
             $fileName = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
             $imageName = $fileName . "-" . time() . "." . $image->getClientOriginalExtension();
-            $uploadPath = 'img/';
+            $uploadPath = 'img/koleksi/';
             $image->move($uploadPath, $imageName);
             $input['gambar'] = $imageName;
         }
 
-        $buku->update($input);
+        Buku::where('id', $id)->update($input);
+        // $buku->update($input);
 
-        if ($buku->user->id !== auth()->user()->id) {
-            abort(403);
-        }
-
-        return redirect('/mypost/buku');
+        return redirect('/koleksi')->with(['success' => 'Buku berhasil diedit']);
     }
 
     /**

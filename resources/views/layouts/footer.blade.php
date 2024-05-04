@@ -33,7 +33,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-5 text-white" style="text-align: end">
+            <div class="col-5 text-white" style="text-align: end" id="kontak">
                 <div class="row">
                     <h5 class="mb-3 bab">Kontak</h5>
                 </div>
