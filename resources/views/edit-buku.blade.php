@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="/css/style.css" />
 
     <title>Form Edit Buku</title>
+    <link rel="shortcut icon" href="{{ $gambar }}" />
 
     <style>
         html {
@@ -131,7 +132,7 @@
             <form action="/koleksi/{{ $data->id }}" method="POST" enctype="multipart/form-data">
                 @method('put')
                 @csrf
-                <h4 class="text-header mb-4">Buat Buku</h4>
+                <h4 class="text-header mb-4">Edit Buku</h4>
                 <input id="nama" type="hidden" name="nama" value="{{ old('nama', $data->nama) }}" required>
                 <div class="mb-3">
                     <label for="judul" class="form-label">Judul</label>
@@ -148,20 +149,6 @@ border: 1px solid rgba(255, 255, 255, 0.18);"
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="sinopsis" class="form-label">Sinopsis</label>
-                    <input type="text" id="sinopsis" placeholder="Sinopsis tidak lebih dari 500 kata..."
-                        name="sinopsis" class="form-control @error('sinopsis') is-invalid @enderror"
-                        style="background: rgba(255, 255, 255, 0.20);
-        backdrop-filter: blur(4px);
-        -webkit-backdrop-filter: blur(4px);
-        border-radius: 10px;
-        border: 1px solid rgba(255, 255, 255, 0.18);"
-                        autofocus required value="{{ old('sinopsis', $data->sinopsis) }}" />
-                    @error('sinopsis')
-                        <p class="text-danger">{{ $message }}</p>
-                    @enderror
-                </div>
-                <div class="mb-3">
                     <label for="kategori" class="form-label">Kategori</label>
                     <select class="form-select bg-light opacity-75" aria-label="Default select example" name="kategori"
                         id="kategori">
@@ -171,6 +158,21 @@ border: 1px solid rgba(255, 255, 255, 0.18);"
                         <option name="kategori" value="novel">Novel</option>
                         <option name="kategori" value="ensiklopedia">Ensiklopedia</option>
                     </select>
+                </div>
+                <div class="mb-3">
+                    <label for="sinopsis" class="form-label">Sinopsis Buku</label>
+                    @error('sinopsis')
+                        <p class="text-danger">{{ $message }}</p>
+                    @enderror
+                    <input id="sinopsis" type="hidden" name="sinopsis" value="{{ old('sinopsis', $data->sinopsis) }}"
+                        required>
+                    <trix-editor input="sinopsis"
+                        style="background: rgba(255, 255, 255, 0.20);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.18);"
+                        required></trix-editor>
                 </div>
                 <div class="mb-3">
                     <label for="isi" class="form-label">Isi Buku</label>

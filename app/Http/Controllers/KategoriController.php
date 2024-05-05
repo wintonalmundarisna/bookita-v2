@@ -22,6 +22,7 @@ class KategoriController extends Controller
             'active' => 'Kategori',
             'data2' => Buku::get()->where('kategori', $kategori)->last(),
             'judul' => 'Semua kategori ' . $kategori,
+            'gambar' => asset('icon-bookita-fix.png')
         ]);
     }
 
@@ -39,6 +40,7 @@ class KategoriController extends Controller
             'active' => 'Kategori',
             'data2' => $data->first(),
             'judul' => 'Semua Buku '.$request->cari,
+            'gambar' => asset('icon-bookita-fix.png')
         ]);
     }
 

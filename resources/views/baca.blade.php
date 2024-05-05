@@ -13,7 +13,7 @@
     {{-- Vite buat hot reload --}}
     @vite([])
     <title>Home</title>
-
+    <link rel="shortcut icon" href="icon-bookita-fix.png" />
     <style>
         body {
             padding: 0;

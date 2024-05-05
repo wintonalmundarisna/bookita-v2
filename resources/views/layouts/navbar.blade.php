@@ -39,7 +39,10 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ $active === 'Koleksi' ? 'active text-danger' : '' }}" aria-current="page"
-                        href="/koleksi">Koleksi</a>
+                    href="/koleksi">Koleksi</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ $active === 'About' ? 'active text-danger' : '' }}" aria-current="page" href="/about">About</a>
                 </li>
             </ul>
             <form action="/cari" class="w-100">

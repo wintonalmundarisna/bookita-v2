@@ -13,6 +13,7 @@
     {{-- Vite buat hot reload --}}
     @vite([])
     <title>bookita | Tambah Wawasan-mu Disini</title>
+    <link rel="shortcut icon" href="icon-bookita-fix.png" />
 
     <style>
         html {

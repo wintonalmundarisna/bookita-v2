@@ -14,6 +14,8 @@
     {{-- Vite buat hot reload --}}
     @vite([])
     <title>Login</title>
+    <link rel="shortcut icon" href="icon-bookita-fix.png" />
+
 </head>
 
 <style>

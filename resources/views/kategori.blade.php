@@ -13,6 +13,7 @@
     {{-- Vite buat hot reload --}}
     @vite([])
     <title>{{ $judul }}</title>
+    <link rel="shortcut icon" href="{{ $gambar }}" />
 
     <style>
         html {

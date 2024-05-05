@@ -12,7 +12,9 @@
 
     {{-- Vite buat hot reload --}}
     @vite([])
-    <title>Home</title>
+    <title>{{ $active }}</title>
+    <link rel=”icon” href=”bookita.png”>
+
 
     <style>
         * {

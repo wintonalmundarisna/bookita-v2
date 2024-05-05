@@ -89,7 +89,8 @@ class KoleksiController extends Controller
 
         // dd($idBuku);
         return view('edit-buku', [
-            'data' => $idBuku
+            'data' => $idBuku,
+            'gambar' => asset('icon-bookita-fix.png')
         ]);
     }
 

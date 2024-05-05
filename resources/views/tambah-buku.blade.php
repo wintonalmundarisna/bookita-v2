@@ -20,6 +20,7 @@
 
     {{-- css --}}
     <link rel="stylesheet" href="/css/style.css" />
+    <link rel="shortcut icon" href="icon-bookita-fix.png" />
 
     <title>Form Tambah Buku</title>
 
@@ -155,18 +156,18 @@ border: 1px solid rgba(255, 255, 255, 0.18);"
                     </select>
                 </div>
                 <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Sinopsis</label>
-                    <input type="text" placeholder="Sinopsis tidak lebih dari 500 kata..." name="sinopsis"
-                        class="form-control @error('sinopsis') is-invalid @enderror"
-                        style="background: rgba(255, 255, 255, 0.20);
-backdrop-filter: blur(4px);
--webkit-backdrop-filter: blur(4px);
-border-radius: 10px;
-border: 1px solid rgba(255, 255, 255, 0.18);"
-                        autofocus required value="{{ old('sinopsis') }}" />
+                    <label for="sinopsis" class="form-label">Sinopsis Buku</label>
                     @error('sinopsis')
                         <p class="text-danger">{{ $message }}</p>
                     @enderror
+                    <input id="sinopsis" type="hidden" name="sinopsis" value="{{ old('sinopsis') }}" required>
+                    <trix-editor input="sinopsis"
+                        style="background: rgba(255, 255, 255, 0.20);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.18);"
+                        required placeholder="Sinopsis tidak lebih dari 200 kata..."></trix-editor>
                 </div>
                 <div class="mb-3">
                     <label for="isi" class="form-label">Isi Buku</label>
@@ -182,7 +183,6 @@ border: 1px solid rgba(255, 255, 255, 0.18);"
         border: 1px solid rgba(255, 255, 255, 0.18);"
                         required></trix-editor>
                 </div>
-
                 <div class="mb-3">
                     <label for="image" class="form-label">Upload Cover</label>
                     <img alt="" class="img-preview img-fluid mb-3 col-sm-5">
