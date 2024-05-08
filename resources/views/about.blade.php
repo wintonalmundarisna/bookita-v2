@@ -33,6 +33,12 @@
             font-weight: 600;
             font-style: normal;;
         }
+        .card-tittle{
+            font-family: "Montserrat", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 600;
+            font-style: normal;;
+        }
 
         @media (max-width: 576px) {
             .logout {
@@ -174,7 +180,7 @@
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h5 class="card-title">UI Design & Front-End</h5>
+                        <h4 class="card-title text-bold fw-bold">UI Design & Front-End</h4>
                         <p class="card-text"><small class="text-body-secondary">Alfian Muhadiin Fatahillah</small></p>
                         <p class="card-text">Saya adalah front-end enginer dan UI designer pemula, saya menggunakan
                             react.js & next.js sebagai framework pembuatan web. </p>
@@ -191,7 +197,7 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h5 class="card-title">UI & Support</h5>
+                            <h4 class="card-title text-bold fw-bold">UI & Support</h4>
                             <p class="card-text"><small class="text-body-secondary">Muhammad Nurdiono</small></p>
                             <p class="card-text">Saya adalah mahasiswa UNINDRA PGRI semester enam yang sedang belajar
                                 JAVA dan MySQL</p>
@@ -209,7 +215,7 @@
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h5 class="card-title">Front-End</h5>
+                        <h4 class="card-title fw-bold">Front-End</h4>
                         <p class="card-text"><small class="text-body-secondary">Deni Ardiansyah</small></p>
                         <p class="card-text"> Saya belajar front-end semenjak masuk kuliah dan masih belajar hingga
                             sekarang.</p>
@@ -226,7 +232,7 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h5 class="card-title">Full Stack & UI/UX design</h5>
+                            <h4 class="card-title fw-bold">Full Stack & UI/UX design</h4>
                             <p class="card-text"><small class="text-body-secondary">Winton Almundarisna</small></p>
                             <p class="card-text">Saya adalah seorang php web developer yang fokus menggunakan LARAVEL
                                 dan MySQL sejak tahun 2021 hingga sekarang.</p>
