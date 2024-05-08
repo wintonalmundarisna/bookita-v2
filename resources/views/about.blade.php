@@ -25,6 +25,10 @@
             margin: 0;
             font-family: "Montserrat", sans-serif;
             font-optical-sizing: auto;
+        }
+        .banner-text{
+            font-family: "Montserrat", sans-serif;
+            font-optical-sizing: auto;
             font-weight: 600;
             font-style: normal;;
         }
@@ -142,7 +146,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <p class="text-bold m-0 px-3 py-2"><span class="fs-1">Kami kelompok dua sebagai
+                <p class="banner-text text-bold m-0 px-3 py-2"><span class="fs-1">Kami kelompok dua sebagai
                         pengembang web</span><span class="text-secondary fs-1 font-family-Montserrat"> </span><span
                         class=" fs-1" style="color: #F1592B">boo</span><span
                         class=" fs-1 font-family-Montserrat" style="color: #00453E">K</span><span
