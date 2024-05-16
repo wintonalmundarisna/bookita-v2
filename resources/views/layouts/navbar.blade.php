@@ -54,9 +54,9 @@
                 @endif
                 <div class="input-group d-md-flex w-100">
                     <input type="text" name="cari" value="{{ request('cari') }}" autocomplete="none"
-                        class="form-control bg-light border-0 rounded-0" placeholder="Cari berdasarkan nama pembuat atau judul buku.."
+                        class="form-control bg-body-secondary border-0 rounded-0" placeholder="Cari berdasarkan nama pembuat atau judul buku.."
                         aria-label="cari" aria-describedby="button-addon2">
-                    <button class="btn bg-light" type="submit" id="button-addon2"><i class="bi bi-search"></i></button>
+                    <button class="btn bg-body-secondary border-0 rounded-0" type="submit" id="button-addon2"><i class="bi bi-search"></i></button>
                 </div>
             </form>
             <div class="nav-item logout">

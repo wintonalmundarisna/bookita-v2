@@ -95,6 +95,8 @@
 </head>
 
 <body>
+
+    {{-- @include('layouts.navbar') --}}
     <nav class="navbar navbar-expand-lg py-4">
         <div class="container-md">
             <a class="navbar-brand" href="#">
@@ -106,28 +108,70 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 fw-light">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 fw-semibold">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
+                        <a class="nav-link dropdown-toggle {{ $active === 'Kategori' ? 'active text-danger' : '' }}"
+                            href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Kategori
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Cerpen</a></li>
-                            <li><a class="dropdown-item" href="#">Novel</a></li>
-                            <li><a class="dropdown-item" href="#">Ensiklopedia</a></li>
+                            <li>
+                                <a class="dropdown-item {{ request()->is('kategori/cerpen') ? 'text-danger' : '' }}"
+                                    type="submit" href="/kategori/{{ 'cerpen' }}" name="cerpen"
+                                    value="cerpen">Cerpen</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item {{ request()->is('kategori/novel') ? 'text-danger' : '' }}"
+                                    href="/kategori/{{ 'novel' }}" name="novel" value="novel">Novel</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item {{ request()->is('kategori/ensiklopedia') ? 'text-danger' : '' }}"
+                                    href="/kategori/{{ 'ensiklopedia' }}" name="ensiklopedia"
+                                    value="ensiklopedia">Ensiklopedia</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item {{ request()->is('kategori/semua/semua') ? 'text-danger' : '' }}"
+                                    href="/kategori/semua/{{ 'semua' }}" name="semua" value="semua">Semua
+                                    Buku</a>
+                            </li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Koleksi</a>
+                        <a class="nav-link {{ $active === 'Koleksi' ? 'active text-danger' : '' }}" aria-current="page"
+                            href="/koleksi">Koleksi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ $active === 'About' ? 'active text-danger' : '' }}" aria-current="page"
+                            href="/about">About</a>
                     </li>
                 </ul>
-                <div class="nav-link logout"><a href="" style="text-decoration: none; color: black">Logout</a>
+                <form action="/cari" class="w-100">
+                    @if (request('nama'))
+                        <input type="hidden" name="nama" value="{{ request('nama') }}">
+                    @endif
+                    @if (request('judul'))
+                        <input type="hidden" name="judul" value="{{ request('judul') }}">
+                    @endif
+                    <div class="input-group d-md-flex w-100">
+                        <input type="text" name="cari" value="{{ request('cari') }}" autocomplete="none"
+                            class="form-control bg-light border-0 rounded-0"
+                            placeholder="Cari berdasarkan nama pembuat atau judul buku.." aria-label="cari"
+                            aria-describedby="button-addon2">
+                        <button class="btn bg-light border-0 rounded-0" type="submit" id="button-addon2"><i
+                                class="bi bi-search"></i></button>
+                    </div>
+                </form>
+                <div class="nav-item logout">
+                    <form action="/logout" method="POST">
+                        @csrf
+                        <button class="nav-link" type="submit"
+                            onclick="return confirm('Yakin ingin logout ?')">Logout</button>
+                    </form>
                 </div>
             </div>
         </div>
     </nav>
-    <div class="container-md" style="margin-top: 5vw;">
+    <div class="container-md" style="margin-top: 3vw;">
         <div class="col mt-5">
             {{-- form --}}
             <form action="/koleksi" method="POST" enctype="multipart/form-data">
@@ -149,7 +193,8 @@ border: 1px solid rgba(255, 255, 255, 0.18);"
                 </div>
                 <div class="mb-3">
                     <label for="kategori" class="form-label">Kategori</label>
-                    <select class="form-select bg-light opacity-75" aria-label="Default select example" name="kategori">
+                    <select class="form-select bg-light opacity-75" aria-label="Default select example"
+                        name="kategori">
                         <option name="kategori" selected value="cerpen">Cerpen</option>
                         <option name="kategori" value="novel">Novel</option>
                         <option name="kategori" value="ensiklopedia">Ensiklopedia</option>
@@ -185,9 +230,12 @@ border: 1px solid rgba(255, 255, 255, 0.18);"
                 </div>
                 <div class="mb-3">
                     <label for="image" class="form-label">Upload Cover</label>
-                    <img alt="" class="img-preview img-fluid mb-3 col-sm-5">
+                    {{-- @if(old('gambar'))
+
+                    @endif --}}
+                    <img alt="" value="" class="img-preview img-fluid mb-3 col-sm-5">
                     <input type="file" class="form-control-buat @error('gambar') is-invalid @enderror"
-                        id="image" name="gambar" required onchange="previewImage()" />
+                        id="image" name="gambar" required value="{{ old('gambar') }}" onchange="previewImage()" />
                     @error('gambar')
                         <p class="text-danger">{{ $message }}</p>
                     @enderror
@@ -228,7 +276,7 @@ border: 1px solid rgba(255, 255, 255, 0.18);"
         }
     </script>
     {{-- footer --}}
-    <div class="container-fluid mt-5 text-dark" style="text-align: center">
+    <div class="container-fluid mt-5 mb-5 text-dark" style="text-align: center">
         <h6 class="fw-light">All Right Reserverd. Copyright © booKita 2024 </h6>
     </div>
     {{-- footer --}}

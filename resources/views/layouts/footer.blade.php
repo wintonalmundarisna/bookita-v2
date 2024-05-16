@@ -1,6 +1,6 @@
 <div class="container-fluid mt-5 text-white" style="background-color: #303030;">
     <div class="container-xl foot">
-        <div class="row" style="padding-block: 10%;">
+        <div class="row" style="padding-block: 5%;">
             <div class="col-4" style="text-align: start">
                 <h1 class="jadikan" style="">Jadikan bacaanmu menyenangkan bersama booKita</h1>
             </div>
@@ -18,7 +18,7 @@
                     <li style="list-style: none">
                         <p>Indonesia</p>
                     </li>
-                    <li style="list-style: none;">
+                    {{-- <li style="list-style: none;">
                         <div class="row" style="width: max-content">
                             <div class="col">
                                 <i class="bi bi-facebook"></i>
@@ -30,7 +30,7 @@
                                 <i class="bi bi-youtube"></i>
                             </div>
                         </div>
-                    </li>
+                    </li> --}}
                 </ul>
             </div>
             <div class="col-5 text-white" style="text-align: end" id="kontak">
@@ -38,11 +38,12 @@
                     <h5 class="mb-3 bab">Kontak</h5>
                 </div>
                 <div class="row mb-3 d-flex justify-content-end" style="">
-                    <button type="btn" class="btn px-4 py-2 text-white bab"
-                        style="background-color: #F1592B; width: max-content;">bookita@gmail.com</button>
+                    <a class="px-4 py-2 text-white bab" href="mailto:bookita.resmi@gmail.com"
+                        style="text-decoration: none; background-color: #F1592B; width: max-content;">bookita.resmi@gmail.com</a>
                 </div>
                 <div class="row">
-                    <h5 class="fw-semibold bab">+ 62 878 206 255 14</h5>
+                    <h5 class="fw-semibold bab"><a class="text-white" href="https://wa.link/5xr6gf"
+                            style="text-decoration: none">+ 62 878 206 255 14 </a></h5>
                 </div>
             </div>
         </div>

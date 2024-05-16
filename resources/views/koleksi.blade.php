@@ -122,7 +122,11 @@
                                     <img src="img/home/cerpen.png" class="img img-fluid" style="width: 3vw;" alt="">
                                 @endif
                             </td>
-                            <td>{!! $d->judul !!}</td>
+                            <td>
+                                <p>
+                                    {{ $d->judul }}
+                                </p>
+                            </td>
                             {{-- <td>{!! $d->nama !!}</td> --}}
                             <td>{!! $d->kategori !!}</td>
                             <td>
@@ -178,9 +182,9 @@
                                     </div>
                                     <div class="col-md-8">
                                         <div class="card-body">
-                                            <h2 class="card-title text-white">{{ $d->judul }}</h2>
+                                            <h2 class="card-title text-white">{{  $d->judul  }}</h2>
                                             <p class="card-text text-white-50"><small>By :
-                                                    {{ $d->nama }}</small></p>
+                                                    {!! $d->nama !!}</small></p>
                                             <p class="card-text text-white-50">{{ $d->sinopsis }}</p>
                                             <button type="button"
                                                 class="btn btn-submit opacity-75 mt-3 w-100 text-white"

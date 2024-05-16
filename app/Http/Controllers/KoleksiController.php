@@ -28,14 +28,17 @@ class KoleksiController extends Controller
      */
     public function create()
     {
-        return view('tambah-buku');
+        return view('tambah-buku', [
+            'active' => 'Koleksi'
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, Buku $buku)
     {
+        // dd(request('gambar')); // dapet, tiggal if else aja di tambah-buku, biar gambar tidak hilang saat refresh error
         $rules = [
             'judul' => 'required|max:200|unique:bukus',
             'kategori' => 'required',
@@ -44,13 +47,20 @@ class KoleksiController extends Controller
             'gambar' => 'image|file|max:2000'
         ];
 
+        if ($request->judul === $buku->judul) {
+            $rules['judul'] = 'required|max:200|unique:bukus';
+        }
+
         $validatedData = $request->validate($rules);
 
         $validatedData['user_id'] = auth()->user()->id;
         $validatedData['judul'] = Str::limit(strip_tags($request->judul), 200);
         $validatedData['judul'] = preg_replace('#</?(div|/).*?>#is', '', $request->judul);
+        $input['judul'] = preg_replace('#</?div.*?>#is', '', $request->judul);
         $validatedData['nama'] = preg_replace('#</?(div|/).*?>#is', '', auth()->user()->name);
+        $input['sinopsis'] = preg_replace('#</?(div|/).*?>#is', '', $request->sinopsis);
         $validatedData['sinopsis'] = preg_replace('#</?div.*?>#is', '', $request->sinopsis);
+        $input['isi'] = preg_replace('#</?(div|/).*?>#is', '', $request->isi);
         $validatedData['isi'] = preg_replace('#</?div.*?>#is', '', $request->isi);
         $data = Buku::create($validatedData);
 
@@ -90,6 +100,7 @@ class KoleksiController extends Controller
         // dd($idBuku);
         return view('edit-buku', [
             'data' => $idBuku,
+            'active' => 'Koleksi',
             'gambar' => asset('icon-bookita-fix.png')
         ]);
     }
@@ -110,7 +121,7 @@ class KoleksiController extends Controller
             'gambar' => 'image|file|max:2000'
         ];
 
-        if ($request->judul != $bukuId->judul) {
+        if ($request->judul != $bukuId->judul or $request->judul === $buku->judul) {
             $rules['judul'] = 'required|max:200|unique:bukus';
         }
 
@@ -119,8 +130,11 @@ class KoleksiController extends Controller
         $input['user_id'] = auth()->user()->id;
         $input['judul'] = Str::limit(strip_tags($request->judul), 200);
         $input['judul'] = preg_replace('#</?(div|/).*?>#is', '', $request->judul);
+        $input['judul'] = preg_replace('#</?div.*?>#is', '', $request->judul);
         $input['nama'] = Str::limit(strip_tags($request->nama), 200);
+        $input['sinopsis'] = preg_replace('#</?(div|/).*?>#is', '', $request->sinopsis);
         $input['sinopsis'] = preg_replace('#</?div.*?>#is', '', $request->sinopsis);
+        $input['isi'] = preg_replace('#</?(div|/).*?>#is', '', $request->isi);
         $input['isi'] = preg_replace('#</?div.*?>#is', '', $request->isi);
 
 
