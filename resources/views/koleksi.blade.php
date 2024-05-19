@@ -15,6 +15,13 @@
     <title>Koleksi</title>
     <link rel="shortcut icon" href="icon-bookita-fix.png" />
 
+    {{-- sweetalert --}}
+    <link href="
+    https://cdn.jsdelivr.net/npm/sweetalert2@11.11.0/dist/sweetalert2.min.css
+    " rel="stylesheet">
+
+    {{-- jquery buat sweetalert --}}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/5.0.7/sweetalert2.min.css" rel="stylesheet">
     <style>
         html {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
@@ -104,7 +111,7 @@
                         <th class="fs-6 fw-bolder">Cover</th>
                         <th class="fs-6 fw-bolder">Judul Buku</th>
                         {{-- <th class="fs-6 fw-bolder">Nama Pembuat</th> --}}
-                        <th class="fs-6 fw-bolder">Kategori</th>
+                        {{-- <th class="fs-6 fw-bolder">Kategori</th> --}}
                         <th class="fs-6 fw-bolder" style="text-align: center;">
                             Aksi
                         </th>
@@ -128,7 +135,7 @@
                                 </p>
                             </td>
                             {{-- <td>{!! $d->nama !!}</td> --}}
-                            <td>{!! $d->kategori !!}</td>
+                            {{-- <td>{!! $d->kategori !!}</td> --}}
                             <td>
                                 <div class="row" style="text-align: center">
                                     <div class="col">
@@ -147,9 +154,8 @@
                                         <form action="/koleksi/{{ $d->id }}" method="POST">
                                             @method('delete')
                                             @csrf
-                                            <button type="submit" class="border-0 bg-white text-danger">
-                                                <a
-                                                    onclick="return confirm('Yakin ingin menghapus {{ $d->judul }} ?')">HAPUS</a>
+                                            <button type="submit" class="border-0 bg-white text-danger delete">
+                                                HAPUS
                                             </button>
                                         </form>
                                     </div>
@@ -182,15 +188,21 @@
                                     </div>
                                     <div class="col-md-8">
                                         <div class="card-body">
-                                            <h2 class="card-title text-white">{{  $d->judul  }}</h2>
+                                            <h2 class="card-title text-white">{{ $d->judul }}</h2>
                                             <p class="card-text text-white-50"><small>By :
                                                     {!! $d->nama !!}</small></p>
                                             <p class="card-text text-white-50">{{ $d->sinopsis }}</p>
-                                            <button type="button"
-                                                class="btn btn-submit opacity-75 mt-3 w-100 text-white"
-                                                style="background-color: #F1592B; width: fit-content">Baca
-                                                Sekarang <i class="bi bi-arrow-right ms-3" style=""></i>
-                                            </button>
+                                            <span class="d-flex justify-content-between">
+                                                <button type="button" class="btn btn-submit opacity-75 mt-3 text-white"
+                                                    data-bs-dismiss="modal"
+                                                    style="background-color: #F1592B; width: 45%"><i
+                                                        class="bi bi-arrow-left" style=""></i> Kembali
+                                                </button>
+                                                <a type="button" href="/baca/{{ $d->id }}" class="btn btn-submit opacity-75 mt-3 text-white"
+                                                    style="background-color: #F1592B; width: 45%; ">
+                                                    Baca<i class="bi bi-arrow-right ms-2" style=""></i>
+                                                </a>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -211,13 +223,35 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
+
+    {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.0/dist/sweetalert2.all.min.js"></script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(document).on('click', '.delete', function(event) {
+                var form = $(this).closest("form");
+
+                event.preventDefault();
+                swal({
+                    title: "Yakin ingin hapus buku ?",
+                    text: "Buku akan dihapus secara permanen",
+                    icon: "warning",
+                    type: "warning",
+                    buttons: ["Kembali", "Hapus"],
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((willDelete) => {
+                    if (willDelete) {
+                        form.submit();
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
-
-{{-- Perbaikan kategori --}}
-{{-- sesuaikan tebal tipis huruf --}}
-{{-- Belum pakai data pada banner --}}
-
-{{-- koleksi --}}
-{{-- ditambahkan cover pada th --}}

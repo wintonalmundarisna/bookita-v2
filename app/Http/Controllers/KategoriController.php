@@ -13,10 +13,6 @@ class KategoriController extends Controller
      */
     public function index($kategori)
     {
-        // $data = Buku::get()->last();
-        // $truncated = Str::of($data->isi)->limit(200, ' (...)');
-        // dd($truncated);
-
         return view('kategori', [
             'data' => Buku::all()->where('kategori', $kategori)->sortByDesc('id'),
             'active' => 'Kategori',
@@ -31,17 +27,24 @@ class KategoriController extends Controller
         $cari = $request->cari;
         $data = Buku::get()->sortByDesc('id');
 
-        if ($cari) {
-            $data = Buku::where('nama', 'like', '%' . $cari . '%')->orWhere('judul', 'like', '%' . $cari . '%')->get();
+        $data = Buku::where('nama', 'like', '%' . $cari . '%')->orWhere('judul', 'like', '%' . $cari . '%')->get();
+
+        if ($data->all() === []) {
+            return view('/not-found', [
+                'data' => $cari
+            ]);
+        } else {
+            $data2 = $data->first();
+
+            return view('kategori', [
+                'data' => $data,
+                'active' => 'Kategori',
+                'data2' => $data2,
+                'judul' => 'Semua Buku ' . $request->cari,
+                'gambar' => asset('icon-bookita-fix.png')
+            ]);
         }
 
-        return view('kategori', [
-            'data' => $data,
-            'active' => 'Kategori',
-            'data2' => $data->first(),
-            'judul' => 'Semua Buku '.$request->cari,
-            'gambar' => asset('icon-bookita-fix.png')
-        ]);
     }
 
     /**

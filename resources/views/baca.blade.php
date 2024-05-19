@@ -12,8 +12,8 @@
 
     {{-- Vite buat hot reload --}}
     @vite([])
-    <title>Home</title>
-    <link rel="shortcut icon" href="icon-bookita-fix.png" />
+    <title>Halaman Baca</title>
+    <link rel="shortcut icon" href="{{ $gambar }}" />
     <style>
         body {
             padding: 0;
@@ -120,39 +120,15 @@
     @include('layouts.navbar')
 
     <section class="main-content text-center">
-        <image class="main-image">
-            <img src="bacabuku.png" class="image-baca w-100" alt="">
+        <image class="main-image" style="background: url('{{ asset('/img/koleksi/' . $data->gambar) }}'); width: 100%; height: 500px; background-size: cover; background-repeat: no-repeat; background-position: center;">
         </image>
 
-        <h1 class="text-center pt-5">The Butcher And The Wren</h1>
-
-
-
+        <h1 class="text-center pt-5" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">{{ $data->judul }}</h1>
     </section>
+
     <div class="container-xl p-4">
-        <p class="first">
-            Kegelapan yang pekat semakin mendekat. Mengisahkan tentang kehidupan seorang pemburu hantu legendaris yang
-            menangkap dan memusnahkan para hantu setiap ada kesempatan. Kegelapan yang pekat semakin mendekat.
-            Mengisahkan tentang kehidupan seorang pemburu hantu legendaris yang menangkap dan memusnahkan para hantu
-            setiap ada kesempatan. Kegelapan yang pekat semakin mendekat. Mengisahkan tentang kehidupan seorang pemburu
-            hantu legendaris yang menangkap dan memusnahkan para hantu setiap ada kesempatan
-        </p>
-        <p class="second">
-            Kegelapan yang pekat semakin mendekat. Mengisahkan tentang kehidupan seorang pemburu hantu legendaris yang
-            menangkap dan memusnahkan para hantu setiap ada kesempatan.
-        </p>
-        <p class="third">
-            Kegelapan yang pekat semakin mendekat. Mengisahkan tentang kehidupan seorang pemburu hantu legendaris yang
-            menangkap dan memusnahkan para hantu setiap ada kesempatan.
-        </p>
-        <p class="fourth">
-            Kegelapan yang pekat semakin mendekat. Mengisahkan tentang kehidupan seorang pemburu hantu legendaris yang
-            menangkap dan memusnahkan para hantu setiap ada kesempatan.
-        </p>
-        <p class="fifth">
-            Kegelapan yang pekat semakin mendekat. Mengisahkan tentang kehidupan seorang pemburu hantu legendaris yang
-            menangkap dan memusnahkan para hantu setiap ada kesempatan. Kegelapan yang pekat semakin mendekat.
-            Mengisahkan tentang kehidupan seorang.
+        <p class="first" style="text-align: justify; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
+            {{ $data->isi }}
         </p>
     </div>
 

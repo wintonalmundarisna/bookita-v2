@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KoleksiController;
 use App\Http\Controllers\KategoriController;
+use App\Models\Buku;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,18 +44,26 @@ Route::get('/kategori/semua/{kategori}', [KategoriController::class, 'semua'])->
 
 Route::get('/cari', [KategoriController::class, 'semua'])->middleware('auth');
 
-// Route::resource('/kategori', KategoriController::class)->middleware('auth');
+Route::get('/baca/{id}', function ($id) {
 
-Route::get('/semua-buku', function () {
-    return view('semua-buku');
+    $where = array ('id' => $id);
+    $buku = Buku::where($where)->first();
+
+    return view('baca', [
+        'data' => $buku,
+        'active' => 'Kategori',
+        'gambar' => asset('icon-bookita-fix.png')
+    ]);
 });
 
-
-Route::get('/baca', function () {
-    return view('baca');
-});
 Route::get('/about', function () {
     return view('about', [
         'active' => 'About',
+    ]);
+});
+
+Route::get('/not-found', function (Request $request) {
+    return view('not-found', [
+        'data' => $request,
     ]);
 });

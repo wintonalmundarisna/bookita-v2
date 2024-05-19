@@ -297,9 +297,3 @@ border: 1px solid rgba(255, 255, 255, 0.18);"
 
 </html>
 
-{{-- Perbaikan kategori --}}
-{{-- sesuaikan tebal tipis huruf --}}
-{{-- Belum pakai data pada banner --}}
-
-{{-- koleksi --}}
-{{-- ditambahkan cover pada th --}}

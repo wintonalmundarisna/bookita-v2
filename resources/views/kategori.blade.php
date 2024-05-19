@@ -183,97 +183,100 @@
 <body>
     @include('layouts.navbar')
     {{-- banner --}}
-    <div class="container-md mt-3">
-        <div class="card mb-3 p-3" style="width: 100%; background: linear-gradient(to right top, #273F62, #020600)">
-            <div class="row g-0">
-                <div class="col-md-4" style="align-self: center;">
-                    <div class="gambar-banner-biasa"
-                        style="background: url('{{ asset('/img/koleksi/' . $data2->gambar) }}'); height: 240px; width: auto; background-size: cover; background-position: center; background-repeat: no-repeat">
+    @isset($data2)
+        <div class="container-md mt-3">
+            <div class="card mb-3 p-3" style="width: 100%; background: linear-gradient(to right top, #273F62, #020600)">
+                <div class="row g-0">
+                    <div class="col-md-4" style="align-self: center;">
+                        <div class="gambar-banner-biasa"
+                            style="background: url('{{ asset('/img/koleksi/' . $data2->gambar) }}'); height: 240px; width: auto; background-size: cover; background-position: center; background-repeat: no-repeat">
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h2 class="card-title text-white">{{ $data2->judul }}</h2>
-                        <p class="card-text text-white-50"><small>By :
-                                {{ $data2->nama }}</small></p>
-                        @if ($data2->kategori === 'cerpen')
-                            <p class="card-text text-danger">
-                                <small><i>{{ $data2->kategori }}</i></small>
-                            </p>
-                        @endif
-                        @if ($data2->kategori === 'novel')
-                            <p class="card-text text-success">
-                                <small><i>{{ $data2->kategori }}</i></small>
-                            </p>
-                        @endif
-                        @if ($data2->kategori === 'ensiklopedia')
-                            <p class="card-text text-primary">
-                                <small><i>{{ $data2->kategori }}</i></small>
-                            </p>
-                        @endif
-                        <p class="card-text text-white-50">{{ $data2->sinopsis }}</p>
-                        <button type="button" class="btn btn-submit opacity-75 mt-3 w-100 text-white"
-                            style="background-color: #F1592B; width: fit-content">Baca
-                            Sekarang <i class="bi bi-arrow-right ms-3" style=""></i>
-                        </button>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h2 class="card-title text-white">{{ $data2->judul }}</h2>
+                            <p class="card-text text-white-50"><small>By :
+                                    {{ $data2->nama }}</small></p>
+                            @if ($data2->kategori === 'cerpen')
+                                <p class="card-text text-danger">
+                                    <small><i>{{ $data2->kategori }}</i></small>
+                                </p>
+                            @endif
+                            @if ($data2->kategori === 'novel')
+                                <p class="card-text text-success">
+                                    <small><i>{{ $data2->kategori }}</i></small>
+                                </p>
+                            @endif
+                            @if ($data2->kategori === 'ensiklopedia')
+                                <p class="card-text text-primary">
+                                    <small><i>{{ $data2->kategori }}</i></small>
+                                </p>
+                            @endif
+                            <p class="card-text text-white-50">{{ $data2->sinopsis }}</p>
+                            <a type="submit" href="/baca/{{ $data2->id }}"
+                                class="btn btn-submit opacity-75 mt-3 w-100 text-white"
+                                style="background-color: #F1592B; width: fit-content">Baca
+                                Sekarang <i class="bi bi-arrow-right ms-3" style=""></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    @endisset
     {{-- banner --}}
     {{-- Semua Kategori --}}
+    @isset($data)
     <div class="container-xl mt-5">
         <div class="row text-start align-center">
-            <p class="fs-3 fw-semibold">{{ $judul }}</p>
-        </div>
-        <div class="row align-content-end">
-            <table class="" style="">
-                <tr>
-                    <th>
-                        <div class="card-group gap-3">
-                            @foreach ($data->skip(1) as $d)
-                                <div class="card mb-5">
-                                    <div class="card-header"
-                                        style="background: url('{{ asset('/img/koleksi/' . $d->gambar) }}');background-size: cover; background-position: center; background-repeat: no-repeat; height: 250px; width: 100%">
-                                    </div>
-                                    <div class="card-body h-25 bg-body-secondary">
-                                        <h5 class="card-title">{{ $d->judul }}</h5>
-                                    </div>
-                                    <div class="card-body bg-body-secondary">
-                                        <small class="text-body-secondary">By. {{ $d->nama }}</small>
-                                        <br>
-                                        @if ($d->kategori === 'cerpen')
-                                            <p class="card-text text-danger">
-                                                <small><i>{{ $d->kategori }}</i></small>
-                                            </p>
-                                        @endif
-                                        @if ($d->kategori === 'novel')
-                                            <p class="card-text text-success">
-                                                <small><i>{{ $d->kategori }}</i></small>
-                                            </p>
-                                        @endif
-                                        @if ($d->kategori === 'ensiklopedia')
-                                            <p class="card-text text-primary">
-                                                <small><i>{{ $d->kategori }}</i></small>
-                                            </p>
-                                        @endif
-                                    </div>
-                                    <div class="card-body bg-body-secondary">
-                                        <button type="button" class="btn btn-primary w-100 border-0 rounded-0 mt-2"
-                                            style="background-color: #F1592B;" data-bs-toggle="modal"
-                                            data-bs-target="#exampleModal{{ $d->id }}">
-                                            Lihat Detail
-                                        </button>
-                                    </div>
-                                </div>
-                            @endforeach
+                <p class="fs-3 fw-semibold">{{ $judul }}</p>
+            </div>
+            <div class="row">
+                @foreach ($data->skip(1) as $d)
+                    <div class="col-md-4 align-content-center">
+                        <div class="card mb-5">
+                            <div class="card-header"
+                                style="background: url('{{ asset('/img/koleksi/' . $d->gambar) }}'); background-size: cover; background-position: center; background-repeat: no-repeat; height: 250px; width: 100%">
+                            </div>
+                            <div class="card-body bg-body-secondary" style="height: 140px;">
+                                <h5 class="card-title fs-auto">{{ $d->judul }}</h5>
+                            </div>
+                            <div class="card-body h-25 bg-body-secondary">
+                                <small class="text-body-secondary">By. {{ $d->nama }}</small>
+                                <br>
+                                @if ($d->kategori === 'cerpen')
+                                    <p class="card-text text-danger">
+                                        <small><i>{{ $d->kategori }}</i></small>
+                                    </p>
+                                @endif
+                                @if ($d->kategori === 'novel')
+                                    <p class="card-text text-success">
+                                        <small><i>{{ $d->kategori }}</i></small>
+                                    </p>
+                                @endif
+                                @if ($d->kategori === 'ensiklopedia')
+                                    <p class="card-text text-primary">
+                                        <small><i>{{ $d->kategori }}</i></small>
+                                    </p>
+                                @endif
+                            </div>
+                            <div class="card-body h-25 bg-body-secondary">
+                                <button type="button" class="btn btn-primary w-100 border-0 rounded-0 mt-2"
+                                    style="background-color: #F1592B;" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal{{ $d->id }}">
+                                    Lihat Detail
+                                </button>
+                            </div>
                         </div>
-                    </th>
+                    </div>
+                    {{-- </div> --}}
+                @endforeach
+                {{-- </th>
                 </tr>
-            </table>
+            </table> --}}
+            </div>
         </div>
-    </div>
+    @endisset
     {{-- Semua Kategori --}}
     {{-- modal --}}
     @foreach ($data as $d)
@@ -313,11 +316,21 @@
                                                 </p>
                                             @endif
                                             <p class="card-text text-white-50">{{ $d->sinopsis }}</p>
-                                            <button type="button"
-                                                class="btn btn-submit opacity-75 mt-3 w-100 text-white"
-                                                style="background-color: #F1592B; width: fit-content">Baca
-                                                Sekarang <i class="bi bi-arrow-right ms-3" style=""></i>
-                                            </button>
+                                            <span class="d-flex justify-content-between">
+                                                <button type="button" class="btn btn-submit opacity-75 mt-3 text-white"
+                                                    data-bs-dismiss="modal"
+                                                    style="background-color: #F1592B; width: 45%"><i
+                                                        class="bi bi-arrow-left" style=""></i> Kembali
+                                                </button>
+                                                {{-- <form action="/baca/{{ $d->id }}" class="bg-danger" style="width: 100%;"
+                                                    method="get"> --}}
+                                                <a type="submit" href="/baca/{{ $d->id }}"
+                                                    class="btn btn-submit opacity-75 mt-3 text-white"
+                                                    style="background-color: #F1592B; width: 45%;">
+                                                    Baca<i class="bi bi-arrow-right ms-2" style=""></i>
+                                                </a>
+                                                {{-- </form> --}}
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
