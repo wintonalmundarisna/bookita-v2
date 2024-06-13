@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 04, 2024 at 05:14 AM
+-- Generation Time: Jun 13, 2024 at 12:57 PM
 -- Server version: 8.0.28
 -- PHP Version: 8.1.3
 
@@ -46,10 +46,12 @@ CREATE TABLE `bukus` (
 --
 
 INSERT INTO `bukus` (`id`, `user_id`, `judul`, `nama`, `kategori`, `sinopsis`, `isi`, `gambar`, `published_at`, `created_at`, `updated_at`) VALUES
-(15, 2, 'Adventure Of Winton Almundarisna', 'Winton Admin', 'cerpen', 'Mengisahkan perjalanan seorang mahasiswa UNINDRA bernama Winton Almundarisna dalam menempuh perjalanannya mencari pedang legendaris di Pulau Tiki', 'Pada suatu hari, Winton Almundarisna melewati sebuah lembah naga, kemudian dia masuk kedalam gua yang amat besar. Winton berfikir bahwa naga tersebut pasti tertidur di dalam gua ini, namun perlahan pintu gua mulai tertutup, ternyata Winton sejak awal bukan masuk kedalam gua, melainkan masuk ke dalam mulut naga.', 'cerdas-1714363788.jpg', NULL, '2024-04-28 21:09:48', '2024-04-28 21:09:48'),
 (16, 2, 'Kucing Peramal', 'Winton Admin', 'novel', 'Mengisahkan tentang kucing yang bisa menggunakan sihir, namun belum banyak manusia yang mengetahuinya, suatu hari rahasia tersebut terbongkar, bagaimanakah nasib kucing penyihir tersebut?', 'Di sebuah desa kecil di kaki Gunung Agung, tinggallah seorang gadis bernama Risa. Sejak kecil, Risa memiliki bakat melukis yang luar biasa. Lukisan-lukisannya penuh dengan warna warna cerah dan imajinasi yang liar. Namun, Risa selalu merasa ragu dengan kemampuannya. Ia tak yakin apakah bisa menjadi seniman profesional. Suatu hari, saat Risa sedang melukis di tepi sawah, seekor kucing liar berbulu oren mendekatinya. Kucing itu duduk di pangkuan Risa dan menatapnya dengan mata kuning keemasan yang penuh misteri. Risa merasa ada keanehan pada kucing itu. Seolah-olah kucing itu bisa membaca pikirannya. Sejak saat itu, kucing oren itu selalu muncul di sekitar Risa. Kadang di teras rumah, saat Risa melukis, bahkan saat Risa mengikuti pameran seni. Tingkah laku kucing itu pun aneh. Ia sering duduk di depan lukisan Risa, seolah-olah sedang menilainya. Risa yang penasaran mulai memperhatikan tingkah laku kucing itu. Ia perhatikan saat kucing itu duduk di depan lukisan abstrak, Risa mendapatkan ide baru untuk melukis dengan gaya yang lebih berani. Saat kucing itu menggosokkan kepalanya pada lukisan realis, Risa terinspirasi untuk melukis potret orang-orang di desanya dengan lebih detail. Risa pun mulai mengikuti \"saran\" dari si kucing oren. Ia mencoba melukis dengan berbagai gaya dan tema baru. Hasilnya, lukisan-lukisan Risa menjadi lebih menarik dan penuh makna. Lukisan-lukisannya pun mulai dihargai oleh para pencinta seni. Berita tentang bakat Risa menyebar ke seluruh pelosok Bali. Banyak galeri seni yang ingin memamerkan lukisannya. Risa pun menjadi seniman terkenal yang karyanya digemari banyak orang. Risa tak pernah lupa dengan jasa si kucing oren. Ia mencarinya ke seluruh desa, namun kucing itu tak pernah terlihat lagi. Risa percaya bahwa kucing itu adalah malaikat pelindungnya, utusan dari alam semesta yang membantunya menemukan bakat dan jalan hidupnya. Risa selalu bersyukur atas kehadiran kucing oren itu dalam hidupnya, dan kisahnya menjadi legenda di desa itu tentang \"Kucing Peramal\" yang membawa keberuntungan.&nbsp;', 'kucing-peramal-1714625050.jpg', NULL, '2024-05-01 21:44:10', '2024-05-01 21:44:10'),
 (17, 2, 'Brewok Man', 'Winton Admin', 'cerpen', 'Kisah om-om brewokan yang menjadi raja geng jalanan di kota Mumbay', 'Pada suatu hari, om Badru dari kota Mumbay sedang berjalan-jalan, kemudian dia bertemu dengan penjahat yang sedang mencuri tas seorang nenek-nenek, lalu dengan jiwa pahlawannya, om Badru pun segera menangkap pencuri tersebut, yang ternyata pencurinya adalah adiknya sendiri.', 'brewok-1714660024.png', NULL, '2024-05-02 07:27:04', '2024-05-02 07:27:04'),
-(22, 2, 'axd', '', 'ensiklopedia', 'axd', 'axd', 'hasil1-1714723900.PNG', NULL, '2024-05-03 01:06:14', '2024-05-03 01:11:40');
+(22, 2, 'axd', '', 'ensiklopedia', 'axd', 'axd', 'hasil1-1714723900.PNG', NULL, '2024-05-03 01:06:14', '2024-05-03 01:11:40'),
+(24, 2, 'The Tester', 'Winton Admin', 'ensiklopedia', 'Sebuah buku yang digunakan untuk mengetes fungsi CRUD', 'Pada suatu hari, developer booKita bernama Winton Almundarisna sedang kebingungan mengenai pengujian program yang sedang ia kembangkan. Dia banyak membuat akun palsu untuk menguji programnya. Hingga pada akhirnya dia pun membuat akun The Tester untuk menguji programnya. Tamat.', 'tahilalats-1714879950.jpg', NULL, '2024-05-04 20:32:29', '2024-05-04 20:32:30'),
+(25, 2, '<h1 style=\"background-color: red;\">HAHAHAHAHA</h1>', 'Winton Admin', 'cerpen', '&lt;h1 style=\"background-color: red;\"&gt;HAHAHAHAHA&lt;/h1&gt;', '&lt;h1 style=\"background-color: red;\"&gt;HAHAHAHAHA&lt;/h1&gt;', 'Screenshot (333)-1715145651.png', NULL, '2024-05-07 22:20:51', '2024-05-07 22:34:49'),
+(30, 2, 'Lama', 'Winton Admin', 'novel', 'Sinopsis Baru', 'Isi Baru', 'before-1716095876.jpg', NULL, '2024-05-18 22:17:56', '2024-05-18 22:18:20');
 
 -- --------------------------------------------------------
 
@@ -144,7 +146,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'winton@gmail.com', 'wintonalmundarisna@gmail.com', NULL, '$2y$12$DzsILS6S2tRY/6p73JFkSuk7NAnU6/0eHPou5gP/o0L5p5I6Z5yXG', NULL, '2024-04-10 23:11:49', '2024-04-10 23:11:49'),
-(2, 'Winton Admin', 'winton@gmail.com', NULL, '$2y$12$gmCaM5w3pl0XbGtEpDX8Yuq0WswPi0fiK1.GrLp7CsUX.NiPNoMmW', NULL, '2024-04-12 19:20:32', '2024-04-12 19:20:32');
+(2, 'Winton Admin', 'winton@gmail.com', NULL, '$2y$12$gmCaM5w3pl0XbGtEpDX8Yuq0WswPi0fiK1.GrLp7CsUX.NiPNoMmW', NULL, '2024-04-12 19:20:32', '2024-04-12 19:20:32'),
+(3, 'Busin Eston', 'busineston@gmail.com', NULL, '$2y$12$K1TzRT45QL0oa3UyNrq3huRlZAGOOrtGEUlFmEyCXfck755.yEmLa', NULL, '2024-05-04 20:18:21', '2024-05-04 20:18:21');
 
 --
 -- Indexes for dumped tables
@@ -200,7 +203,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `bukus`
 --
 ALTER TABLE `bukus`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -224,7 +227,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
