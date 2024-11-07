@@ -18,6 +18,9 @@ return new class extends Migration {
             $table->string('kategori');
             $table->text('sinopsis');
             $table->text('isi');
+            $table->integer('diunduh')->default(0);
+            $table->text('noTlp');
+            $table->unsignedBigInteger('harga')->nullable();
             $table->string('gambar')->unique();
             $table->timestamp('published_at')->nullable();
             $table->timestamps();

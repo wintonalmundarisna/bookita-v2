@@ -14,14 +14,26 @@ class DaftarController extends Controller
 
     public function daftar(Request $request) {
         $validatedData = $request->validate([
-            'email'     => 'required|email:dns|unique:users',
             'name'      => 'required|min:3|max:255',
-            'password'  => 'required|min:3|max:255'
+            'noTelp'      => 'required|min:3|max:255',
+            'email'     => 'required|email:dns|unique:users',
+            'password'  => 'required|min:3|max:255',
+            'gambar' => 'image|file|max:2000'
         ]);
 
         $validatedData['password'] = Hash::make($validatedData['password']);
 
-        User::create($validatedData);
+        $data = User::create($validatedData);
+
+        if ($image = $request->file('gambar')) {
+            $fileName = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+            $imageName = $fileName . "-" . time() . "." . $image->getClientOriginalExtension();
+            $uploadPath = 'img/user';
+            $image->move($uploadPath, $imageName);
+            $data->gambar = $imageName;
+            $data->save();
+        }
+
 
         return redirect('/')->with(['success' => 'Pendaftaran berhasil, silahkan login!']);
     }

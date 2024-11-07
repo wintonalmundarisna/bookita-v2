@@ -20,6 +20,11 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
         }
 
+        .card {
+            border: 1px solid black;
+            box-shadow: 10px 10px 5px 0px gray;
+        }
+
         @media (min-width: 320px) {
             .logout {
                 margin-top: 15px;
@@ -194,30 +199,50 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h2 class="card-title text-white">{{ $data2->judul }}</h2>
-                            <p class="card-text text-white-50"><small>By :
-                                    {{ $data2->nama }}</small></p>
-                            @if ($data2->kategori === 'cerpen')
-                                <p class="card-text text-danger">
-                                    <small><i>{{ $data2->kategori }}</i></small>
-                                </p>
-                            @endif
-                            @if ($data2->kategori === 'novel')
-                                <p class="card-text text-success">
-                                    <small><i>{{ $data2->kategori }}</i></small>
-                                </p>
-                            @endif
-                            @if ($data2->kategori === 'ensiklopedia')
-                                <p class="card-text text-primary">
-                                    <small><i>{{ $data2->kategori }}</i></small>
-                                </p>
-                            @endif
-                            <p class="card-text text-white-50">{{ $data2->sinopsis }}</p>
-                            <a type="submit" href="/baca/{{ $data2->id }}"
-                                class="btn btn-submit opacity-75 mt-3 w-100 text-white"
-                                style="background-color: #F1592B; width: fit-content">Baca
-                                Sekarang <i class="bi bi-arrow-right ms-3" style=""></i>
-                            </a>
+                            <span class="d-flex justify-content-between">
+                                <h2 class="card-title text-white">{{ $data2->judul }}</h2>
+                                @if ($data2->kategori === 'cerpen')
+                                    <button class="btn btn-sm btn-outline-danger" @readonly(true)>
+                                        {{ $data2->kategori }}
+                                    </button>
+                                @endif
+                                @if ($data2->kategori === 'novel')
+                                    <button class="btn btn-sm btn-outline-success">
+                                        {{ $data2->kategori }}
+                                    </button>
+                                @endif
+                                @if ($data2->kategori === 'ensiklopedia')
+                                    <button class="btn btn-sm btn-outline-primary">
+                                        {{ $data2->kategori }}
+                                    </button>
+                                @endif
+
+                            </span>
+
+                            <p class="card-text text-white-50 align-center"><i><small>By :
+                                {{ $data2->nama }} | <a href="https://wa.link/5xr6gf"
+                                    class="text-decoration-none text-white-50"><i
+                                        class="bi bi-whatsapp"></i></a> |
+                                <a href="mailto:bookita.resmi@gmail.com"
+                                    class="text-decorationn-none text-white-50"> <i
+                                        class="bi bi-envelope"></i></a></small></i></p>
+                            
+                                
+
+                                        <p class="card-text text-white-50">Rp. {{ number_format($data2->harga) }}</p>
+                                        <p class="card-text text-white-50">{{ $data2->sinopsis }}</p>
+                                        <span class="d-flex justify-content-between">
+                                            <a type="submit" href="/baca/{{ $data2->id }}"
+                                                class="btn btn-submit opacity-75 mt-3 text-white"
+                                                style="background-color: #F1592B; width: 45%"><i
+                                                    class="bi bi-book me-1"></i> Baca
+                                            </a>
+                                            <a href="/transaksi/{{ $data2->id }}"
+                                                class="btn btn-submit opacity-75 mt-3 text-white"
+                                                style="background-color: #F1592B; width: 45%;">
+                                                Beli<i class="bi bi-bag-plus ms-2"></i>
+                                            </a>
+                                        </span>
                         </div>
                     </div>
                 </div>
@@ -227,45 +252,27 @@
     {{-- banner --}}
     {{-- Semua Kategori --}}
     @isset($data)
-    <div class="container-xl mt-5">
-        <div class="row text-start align-center">
+        <div class="container-xl mt-5">
+            <div class="row text-start align-center">
                 <p class="fs-3 fw-semibold">{{ $judul }}</p>
             </div>
-            <div class="row">
+            <div class="row p-0">
                 @foreach ($data->skip(1) as $d)
-                    <div class="col-md-4 align-content-center">
-                        <div class="card mb-5">
+                    <div class="col p-0 d-flex justify-content-center g-5 align-content-center">
+                        <div class="card p-0" style="width: 12rem">
                             <div class="card-header"
-                                style="background: url('{{ asset('/img/koleksi/' . $d->gambar) }}'); background-size: cover; background-position: center; background-repeat: no-repeat; height: 250px; width: 100%">
+                                style="background: url('{{ asset('img/koleksi/' . $d->gambar) }}'); background-size: cover; background-position: center; background-repeat: no-repeat; height: 200px; width: 100%">
                             </div>
-                            <div class="card-body bg-body-secondary" style="height: 140px;">
-                                <h5 class="card-title fs-auto">{{ $d->judul }}</h5>
+                            <div class="card-body" style="height: 130px">
+                                <h5 class="card-title">{{ $d->judul }}</h5>
+                                <small><i class="bi bi-star-fill"></i> 4+</small>
                             </div>
-                            <div class="card-body h-25 bg-body-secondary">
-                                <small class="text-body-secondary">By. {{ $d->nama }}</small>
-                                <br>
-                                @if ($d->kategori === 'cerpen')
-                                    <p class="card-text text-danger">
-                                        <small><i>{{ $d->kategori }}</i></small>
-                                    </p>
-                                @endif
-                                @if ($d->kategori === 'novel')
-                                    <p class="card-text text-success">
-                                        <small><i>{{ $d->kategori }}</i></small>
-                                    </p>
-                                @endif
-                                @if ($d->kategori === 'ensiklopedia')
-                                    <p class="card-text text-primary">
-                                        <small><i>{{ $d->kategori }}</i></small>
-                                    </p>
-                                @endif
-                            </div>
-                            <div class="card-body h-25 bg-body-secondary">
-                                <button type="button" class="btn btn-primary w-100 border-0 rounded-0 mt-2"
-                                    style="background-color: #F1592B;" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal{{ $d->id }}">
-                                    Lihat Detail
-                                </button>
+                            <div class="card-footer bg-white d-flex justify-content-between border-0 align-content-center">
+                                <p class="card-text h-100 my-auto"><small class="text-body-secondary">Rp.
+                                        {{ number_format($d->harga) }}</small></p>
+                                <button class="btn btn-sm text-white" style="background-color: #F1592B;"
+                                    data-bs-toggle="modal" data-bs-target="#exampleModal{{ $d->id }}"><i
+                                        class="bi bi-eye"></i> <small>DETAIL</small></button>
                             </div>
                         </div>
                     </div>
@@ -297,39 +304,46 @@
                                     </div>
                                     <div class="col-md-8">
                                         <div class="card-body">
-                                            <h2 class="card-title text-white">{{ $d->judul }}</h2>
-                                            <p class="card-text text-white-50"><small>By :
-                                                    {{ $d->nama }}</small></p>
-                                            @if ($d->kategori === 'cerpen')
-                                                <p class="card-text text-danger">
-                                                    <small><i>{{ $d->kategori }}</i></small>
-                                                </p>
-                                            @endif
-                                            @if ($d->kategori === 'novel')
-                                                <p class="card-text text-success">
-                                                    <small><i>{{ $d->kategori }}</i></small>
-                                                </p>
-                                            @endif
-                                            @if ($d->kategori === 'ensiklopedia')
-                                                <p class="card-text text-primary">
-                                                    <small><i>{{ $d->kategori }}</i></small>
-                                                </p>
-                                            @endif
+                                            <span class="d-flex justify-content-between">
+                                                <h2 class="card-title text-white">{{ $d->judul }}</h2>
+                                                @if ($d->kategori === 'cerpen')
+                                                    <button class="btn btn-sm btn-outline-danger" @readonly(true)>
+                                                        {{ $d->kategori }}
+                                                    </button>
+                                                @endif
+                                                @if ($d->kategori === 'novel')
+                                                    <button class="btn btn-sm btn-outline-success">
+                                                        {{ $d->kategori }}
+                                                    </button>
+                                                @endif
+                                                @if ($d->kategori === 'ensiklopedia')
+                                                    <button class="btn btn-sm btn-outline-primary">
+                                                        {{ $d->kategori }}
+                                                    </button>
+                                                @endif
+
+                                            </span>
+
+                                            <p class="card-text text-white-50 align-center"><i><small>By :
+                                                        {{ $d->nama }} | <a href="https://wa.link/5xr6gf"
+                                                            class="text-decoration-none text-white-50"><i
+                                                                class="bi bi-whatsapp"></i></a> |
+                                                        <a href="mailto:bookita.resmi@gmail.com"
+                                                            class="text-decorationn-none text-white-50"> <i
+                                                                class="bi bi-envelope"></i></a></small></i></p>
+                                            <p class="card-text text-white-50">Rp. {{ number_format($d->harga) }}</p>
                                             <p class="card-text text-white-50">{{ $d->sinopsis }}</p>
                                             <span class="d-flex justify-content-between">
-                                                <button type="button" class="btn btn-submit opacity-75 mt-3 text-white"
-                                                    data-bs-dismiss="modal"
-                                                    style="background-color: #F1592B; width: 45%"><i
-                                                        class="bi bi-arrow-left" style=""></i> Kembali
-                                                </button>
-                                                {{-- <form action="/baca/{{ $d->id }}" class="bg-danger" style="width: 100%;"
-                                                    method="get"> --}}
                                                 <a type="submit" href="/baca/{{ $d->id }}"
                                                     class="btn btn-submit opacity-75 mt-3 text-white"
-                                                    style="background-color: #F1592B; width: 45%;">
-                                                    Baca<i class="bi bi-arrow-right ms-2" style=""></i>
+                                                    style="background-color: #F1592B; width: 45%"><i
+                                                        class="bi bi-book me-1"></i> Baca
                                                 </a>
-                                                {{-- </form> --}}
+                                                <a href="/transaksi/{{ $d->id }}"
+                                                    class="btn btn-submit opacity-75 mt-3 text-white"
+                                                    style="background-color: #F1592B; width: 45%;">
+                                                    Beli<i class="bi bi-bag-plus ms-2"></i>
+                                                </a>
                                             </span>
                                         </div>
                                     </div>

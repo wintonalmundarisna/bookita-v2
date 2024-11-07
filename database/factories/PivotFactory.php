@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Home>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Pivot>
  */
-class HomeFactory extends Factory
+class PivotFactory extends Factory
 {
     /**
      * Define the model's default state.

@@ -29,6 +29,12 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
         }
 
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
         trix-toolbar [data-trix-button-group="file-tools"] {
             display: none;
         }
@@ -178,7 +184,7 @@
                 @csrf
                 <h4 class="text-header mb-4">Buat Buku</h4>
                 <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Judul</label>
+                    <label for="exampleFormControlInput1" class="form-label">Judul Buku</label>
                     <input type="text" placeholder="Buat Judul..." name="judul"
                         class="form-control @error('judul') is-invalid @enderror"
                         style="background: rgba(255, 255, 255, 0.20);
@@ -192,7 +198,7 @@ border: 1px solid rgba(255, 255, 255, 0.18);"
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="kategori" class="form-label">Kategori</label>
+                    <label for="kategori" class="form-label">Kategori Buku</label>
                     <select class="form-select bg-light opacity-75" aria-label="Default select example"
                         name="kategori">
                         <option name="kategori" selected value="cerpen">Cerpen</option>
@@ -229,13 +235,28 @@ border: 1px solid rgba(255, 255, 255, 0.18);"
                         required></trix-editor>
                 </div>
                 <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Harga Buku</label>
+                    <input type="number" placeholder="Hanya angka..." name="harga"
+                        class="form-control @error('harga') is-invalid @enderror"
+                        style="background: rgba(255, 255, 255, 0.20);
+backdrop-filter: blur(4px);
+-webkit-backdrop-filter: blur(4px);
+border-radius: 10px;
+border: 1px solid rgba(255, 255, 255, 0.18);"
+                        autofocus required />
+                    @error('harga')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="mb-3">
                     <label for="image" class="form-label">Upload Cover</label>
-                    {{-- @if(old('gambar'))
+                    {{-- @if (old('gambar'))
 
                     @endif --}}
                     <img alt="" value="" class="img-preview img-fluid mb-3 col-sm-5">
                     <input type="file" class="form-control-buat @error('gambar') is-invalid @enderror"
-                        id="image" name="gambar" required value="{{ old('gambar') }}" onchange="previewImage()" />
+                        id="image" name="gambar" required value="{{ old('gambar') }}"
+                        onchange="previewImage()" />
                     @error('gambar')
                         <p class="text-danger">{{ $message }}</p>
                     @enderror

@@ -6,7 +6,13 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KoleksiController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\KritikController;
 use App\Models\Buku;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +32,7 @@ Route::post('/register', [DaftarController::class, 'daftar']);
 Route::get('/', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/', [LoginController::class, 'login']);
 
-Route::post('/logout', [LoginController::class, 'logout']);
+Route::get('/logout', [LoginController::class, 'logout']);
 
 Route::get('/home', [HomeController::class, 'index'])->middleware('auth');
 
@@ -44,17 +50,9 @@ Route::get('/kategori/semua/{kategori}', [KategoriController::class, 'semua'])->
 
 Route::get('/cari', [KategoriController::class, 'semua'])->middleware('auth');
 
-Route::get('/baca/{id}', function ($id) {
+Route::post('/kritik-saran', [KritikController::class, 'store'])->middleware('auth');
 
-    $where = array ('id' => $id);
-    $buku = Buku::where($where)->first();
-
-    return view('baca', [
-        'data' => $buku,
-        'active' => 'Kategori',
-        'gambar' => asset('icon-bookita-fix.png')
-    ]);
-});
+Route::get('/baca/{id}', [KoleksiController::class, 'baca'])->middleware('auth');
 
 Route::get('/about', function () {
     return view('about', [
@@ -67,3 +65,6 @@ Route::get('/not-found', function (Request $request) {
         'data' => $request,
     ]);
 });
+
+Route::get('/transaksi/{id}', [TransaksiController::class, 'transaksi'])->middleware('auth');
+Route::post('/transaksi/sukses', [TransaksiController::class, 'transaksi_sukses'])->middleware('auth');

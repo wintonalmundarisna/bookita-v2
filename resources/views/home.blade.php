@@ -20,6 +20,21 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
         }
 
+        .carousel {
+            border: 1px solid black;
+            box-shadow: 0px 2px 1px 0px gray;
+        }
+
+        .card-shadow {
+            border: 1px solid black;
+            box-shadow: 10px 10px 5px 0px gray;
+        }
+
+        .pink {
+            border: 1px solid black;
+            box-shadow: 10px 10px 5px 0px gray;
+        }
+
         @media (min-width: 320px) {
             .logout {
                 margin-top: 15px;
@@ -209,7 +224,7 @@
     @include('layouts.navbar')
 
     {{-- Carousel --}}
-    <div id="carouselExampleCaptions" class="carousel slide">
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
                 aria-current="true" aria-label="Slide 1"></button>
@@ -219,15 +234,15 @@
                 aria-label="Slide 3"></button>
         </div>
         <div class="carousel-inner">
-            <div class="carousel-item active">
+            <div class="carousel-item active" data-bs-interval="2500">
                 <img src="img/home/HERO-FULL.png" class="d-block w-100" alt="...">
             </div>
-            <div class="carousel-item">
+            <div class="carousel-item" data-bs-interval="2500">
                 <img src="img/home/carouselDua.png" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
                 </div>
             </div>
-            <div class="carousel-item">
+            <div class="carousel-item" data-bs-interval="2500">
                 <img src="img/home/carouselTiga.png" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
                 </div>
@@ -253,7 +268,7 @@
         </div>
         <div class="row align-center">
             <div class="col-sm">
-                <div class="card mb-3 p-3"
+                <div class="card card-shadow mb-3 p-3 "
                     style="width: 100%; background: linear-gradient(to right top, #DB2D31, #8C0003)">
                     <div class="row g-0">
                         <div class="col align-content-center">
@@ -272,7 +287,7 @@
                 </div>
             </div>
             <div class="col-sm">
-                <div class="card mb-3 p-3"
+                <div class="card card-shadow mb-3 p-3 "
                     style="width: 100%; background: linear-gradient(to right top, #74AD52, #2D6F06)">
                     <div class="row g-0">
                         <div class="col align-content-center">
@@ -291,7 +306,7 @@
                 </div>
             </div>
             <div class="col-xl">
-                <div class="card mb-3 p-3"
+                <div class="card card-shadow mb-3 p-3 "
                     style="width: 100%; background: linear-gradient(to right top, #153E76, #001B41)">
                     <div class="row g-0">
                         <div class="col align-content-center">
@@ -329,62 +344,143 @@
             </div>
         </div>
         {{-- Baca semua --}}
+
+        {{-- buku terlaris --}}
+        {{-- @isset($data) --}}
+        <div class="row text-start align-center mt-5">
+            <p class="fs-3 fw-semibold">{{ $judul2 }}</p>
+        </div>
+        <div class="container-xl rounded card-shadow mt-2">
+            <div class="row" style="overflow: hidden;">
+                <div class="col-xl p-0 border-0">
+                    @foreach ($terlaris1 as $t1)
+                        <div class="card border-0 text-bg-dark rounded-0">
+                            <img src="{{ asset('img/koleksi/' . $t1->gambar) }}" class="rounded-start"
+                                alt="...">
+                            <div class="card-img-overlay rounded-start">
+                                <span class="d-flex justify-content-between">
+                                    <h5 class="card-title">{{ $t1->judul }}</h5>
+                                    @if ($t1->kategori === 'cerpen')
+                                        <button class="btn btn-sm btn-outline-danger" @readonly(true)>
+                                            {{ $t1->kategori }}
+                                        </button>
+                                    @endif
+                                    @if ($t1->kategori === 'novel')
+                                        <button class="btn btn-sm btn-outline-success">
+                                            {{ $t1->kategori }}
+                                        </button>
+                                    @endif
+                                    @if ($t1->kategori === 'ensiklopedia')
+                                        <button class="btn btn-sm btn-outline-primary">
+                                            {{ $t1->kategori }}
+                                        </button>
+                                    @endif
+                                </span>
+                                <p class="card-text">{{ $t1->sinopsis }}</p>
+                                <p class="card-text fw-lighter"><small>Telah diunduh sebanyak
+                                        {{ $t1->diunduh }}x</small></p>
+                                <small>
+                                    <button type="button" class="btn btn-sm text-white" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $t1->id }}"
+                                        style="background-color: #F1592B;">Lihat selengkapnya</button>
+                                </small>
+                            </div>
+                            <div class="card-footer bg-transparent" style="margin-top: -50px; padding-bottom: 17.5px">
+                                <p class="card-text">
+                                    <small><i>{{ $t1->nama }}</i></small>
+                                </p>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+                <div class="col-xl">
+                    <div class="row h-50">
+                        @foreach ($terlaris2 as $t2)
+                            <div class="card border-black rounded-0 p-0 text-end" style="max-width: 100%">
+                                <div class="row g-0 h-100">
+                                    <div class="col-5"
+                                        style="background: url('{{ asset('img/koleksi/' . $t2->gambar) }}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+                                    </div>
+                                    <div class="col-7">
+                                        <div class="card-body h-100 text-light-subtle" style="background-color: #ddd">
+                                            <h5 class="card-title">{{ $t2->judul }}</h5>
+                                            <p class="card-text">{{ $t2->sinopsis }}</p>
+                                            <p class="card-text fw-lighter"><small>Telah diunduh sebanyak
+                                                    {{ $t2->diunduh }}x</small></p>
+                                            <small>
+                                                <button type="button" class="btn btn-sm text-white" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $t2->id }}"
+                                                    style="background-color: #F1592B;">Lihat selengkapnya</button>
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                    <div class="row h-50">
+                        @foreach ($terlaris3 as $t3)
+                            <div class="card p-0 border-black rounded-0" style="max-width: 100%">
+                                <div class="row g-0 h-100">
+                                    <div class="col-7">
+                                        <div class="card-body h-100 text-light-subtle" style="background-color: #ddd">
+                                            <h5 class="card-title">{{ $t3->judul }}</h5>
+                                            <p class="card-text">{{ $t3->sinopsis }}</p>
+                                            <p class="card-text fw-lighter"><small>Telah diunduh sebanyak
+                                                    {{ $t3->diunduh }}x</small></p>
+                                            <small>
+                                                <button type="button" class="btn btn-sm text-white" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $t3->id }}"
+                                                    style="background-color: #F1592B;">Lihat selengkapnya</button>
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class="col-5"
+                                        style="background: url('{{ asset('img/koleksi/' . $t3->gambar) }}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+                                    </div>
+
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{-- @endisset --}}
+        {{-- buku terlaris --}}
+
         {{-- buku terbaru --}}
         @isset($data)
-            <div class="container-xl mt-5">
-                <div class="row text-start align-center">
-                    <p class="fs-3 fw-semibold">{{ $judul }}</p>
-                </div>
-                <div class="row">
+            <div class="row text-start align-center mt-5">
+                <p class="fs-3 fw-semibold">{{ $judul }}</p>
+            </div>
+            <div class="container-xl p-0 mt-2">
+                <div class="row p-0">
                     @foreach ($data as $d)
-                        <div class="col-md-4 align-content-center">
-                            <div class="card mb-5" style="">
+                        <div class="col d-flex justify-content-center">
+                            <div class="card mb-3 card-shadow p-0" style="width: 12rem">
                                 <div class="card-header"
-                                    style="background: url('{{ asset('/img/koleksi/' . $d->gambar) }}'); background-size: cover; background-position: center; background-repeat: no-repeat; height: 250px; width: 100%">
+                                    style="background: url('{{ asset('img/koleksi/' . $d->gambar) }}'); background-size: cover; background-position: center; background-repeat: no-repeat; height: 200px; width: 100%">
                                 </div>
-                                <div class="card-body bg-body-secondary" style="height: 140px;">
-                                    <h5 class="card-title fs-auto">{{ $d->judul }}</h5>
+                                <div class="card-body" style="height: 130px">
+                                    <h5 class="card-title">{{ $d->judul }}</h5>
+                                    <small><i class="bi bi-file-arrow-down-fill"></i> {{ $d->diunduh }}</small>
                                 </div>
-                                <div class="card-body h-25 bg-body-secondary">
-                                    <small class="text-body-secondary">By. {{ $d->nama }}</small>
-                                    <br>
-                                    @if ($d->kategori === 'cerpen')
-                                        <p class="card-text text-danger">
-                                            <small><i>{{ $d->kategori }}</i></small>
-                                        </p>
-                                    @endif
-                                    @if ($d->kategori === 'novel')
-                                        <p class="card-text text-success">
-                                            <small><i>{{ $d->kategori }}</i></small>
-                                        </p>
-                                    @endif
-                                    @if ($d->kategori === 'ensiklopedia')
-                                        <p class="card-text text-primary">
-                                            <small><i>{{ $d->kategori }}</i></small>
-                                        </p>
-                                    @endif
-                                </div>
-                                <div class="card-body h-25 bg-body-secondary">
-                                    <button type="button" class="btn btn-primary w-100 border-0 rounded-0 mt-2"
-                                        style="background-color: #F1592B;" data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal{{ $d->id }}">
-                                        Lihat Detail
-                                    </button>
+                                <div
+                                    class="card-footer bg-white d-flex justify-content-between border-0 align-content-center">
+                                    <p class="card-text h-100 my-auto"><small class="text-body-secondary">Rp.
+                                            {{ number_format($d->harga) }}</small></p>
+                                    <button class="btn btn-sm text-white" style="background-color: #F1592B;"
+                                        data-bs-toggle="modal" data-bs-target="#exampleModal{{ $d->id }}"><i
+                                            class="bi bi-eye"></i> <small>DETAIL</small></button>
                                 </div>
                             </div>
                         </div>
-                        {{-- </div> --}}
                     @endforeach
-                    {{-- </th>
-                </tr>
-            </table> --}}
                 </div>
             </div>
         @endisset
     </div>
     {{-- buku terbaru --}}
     {{-- modal --}}
-    @foreach ($data as $d)
+    @foreach ($data2 as $d)
         <div class="modal fade" id="exampleModal{{ $d->id }}" tabindex="-1"
             aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
@@ -402,40 +498,46 @@
                                     </div>
                                     <div class="col-md-8">
                                         <div class="card-body">
-                                            <h2 class="card-title text-white">{{ $d->judul }}</h2>
-                                            <p class="card-text text-white-50"><small>By :
-                                                    {{ $d->nama }}</small></p>
-                                            @if ($d->kategori === 'cerpen')
-                                                <p class="card-text text-danger">
-                                                    <small><i>{{ $d->kategori }}</i></small>
-                                                </p>
-                                            @endif
-                                            @if ($d->kategori === 'novel')
-                                                <p class="card-text text-success">
-                                                    <small><i>{{ $d->kategori }}</i></small>
-                                                </p>
-                                            @endif
-                                            @if ($d->kategori === 'ensiklopedia')
-                                                <p class="card-text text-primary">
-                                                    <small><i>{{ $d->kategori }}</i></small>
-                                                </p>
-                                            @endif
+                                            <span class="d-flex justify-content-between">
+                                                <h2 class="card-title text-white">{{ $d->judul }}</h2>
+                                                @if ($d->kategori === 'cerpen')
+                                                    <button class="btn btn-sm btn-outline-danger" @readonly(true)>
+                                                        {{ $d->kategori }}
+                                                    </button>
+                                                @endif
+                                                @if ($d->kategori === 'novel')
+                                                    <button class="btn btn-sm btn-outline-success">
+                                                        {{ $d->kategori }}
+                                                    </button>
+                                                @endif
+                                                @if ($d->kategori === 'ensiklopedia')
+                                                    <button class="btn btn-sm btn-outline-primary">
+                                                        {{ $d->kategori }}
+                                                    </button>
+                                                @endif
+
+                                            </span>
+
+                                            <p class="card-text text-white-50 align-center"><i><small>By :
+                                                        {{ $d->nama }} | <a href="https://wa.link/5xr6gf"
+                                                            class="text-decoration-none text-white-50"><i
+                                                                class="bi bi-whatsapp"></i></a> |
+                                                        <a href="mailto:bookita.resmi@gmail.com"
+                                                            class="text-decorationn-none text-white-50"> <i
+                                                                class="bi bi-envelope"></i></a></small></i></p>
+                                            <p class="card-text text-white-50">Rp. {{ number_format($d->harga) }}</p>
                                             <p class="card-text text-white-50">{{ $d->sinopsis }}</p>
                                             <span class="d-flex justify-content-between">
-                                                <button type="button"
-                                                    class="btn btn-submit opacity-75 mt-3 text-white"
-                                                    data-bs-dismiss="modal"
-                                                    style="background-color: #F1592B; width: 45%"><i
-                                                        class="bi bi-arrow-left" style=""></i> Kembali
-                                                </button>
-                                                {{-- <form action="/baca/{{ $d->id }}" class="bg-danger" style="width: 100%;"
-                                                    method="get"> --}}
                                                 <a type="submit" href="/baca/{{ $d->id }}"
                                                     class="btn btn-submit opacity-75 mt-3 text-white"
-                                                    style="background-color: #F1592B; width: 45%;">
-                                                    Baca<i class="bi bi-arrow-right ms-2" style=""></i>
+                                                    style="background-color: #F1592B; width: 45%"><i
+                                                        class="bi bi-book me-1"></i> Baca
                                                 </a>
-                                                {{-- </form> --}}
+                                                <a href="/transaksi/{{ $d->id }}"
+                                                    class="btn btn-submit opacity-75 mt-3 text-white"
+                                                    style="background-color: #F1592B; width: 45%;">
+                                                    Beli<i class="bi bi-bag-plus ms-2"></i>
+                                                </a>
                                             </span>
                                         </div>
                                     </div>
@@ -456,6 +558,36 @@
     {{-- cdn bootstrap --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
+
+    {{-- cdn sweetalert2 --}}
+    <script language="JavaScript" type="text/javascript" src="{{ asset('js/jquery3.7.1.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {{-- cdn sweetalert2 --}}
+
+    <script>
+        @if (Session::has('success'))
+            Swal.fire({
+                title: "Selamat datang!",
+                text: "{{ Auth::user()->name }}",
+                imageUrl: "{{ asset('img/home/welcome.png') }}",
+                imageWidth: 400,
+                imageHeight: 300,
+                imageAlt: "Welcome image",
+                timer: 2000,
+                showConfirmButton: false
+            });
+        @endif
+
+        @if (Session::has('dibeli'))
+            Swal.fire({
+                title: "{{ session('dibeli') }}",
+                icon: "success",
+                text: "selamat membaca",
+                timer: 4000,
+                showConfirmButton: false
+            });
+        @endif
     </script>
 </body>
 

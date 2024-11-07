@@ -38,9 +38,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+        'saldo' => 'integer',
     ];
 
     public function bukus() {
         return $this->hasMany(Buku::class);
+    }
+
+    public function kritiks() {
+        return $this->hasMany(Kritik::class);
     }
 }

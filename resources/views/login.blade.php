@@ -9,10 +9,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="app.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
 
     {{-- Vite buat hot reload --}}
-    @vite([])
+    {{-- @vite([]) --}}
     <title>Login</title>
     <link rel="shortcut icon" href="icon-bookita-fix.png" />
 
@@ -57,64 +59,60 @@
     <section class="vh-100 pt-3">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-6 my-auto">
+                <div class="col-sm-6 text-black">
 
-                    
-                    <div class="col-sm-6 text-black">
+                    <div class="px-5 ms-xl-4">
+                    {{-- Pemberitahuan ketika berhsil register atau login --}}
+                     @if (session()->has('success'))
+                     <div class="alert alert-success alert-dismissible fade show" role="alert">
+                         <strong>{{ session('success') }}</strong>
+                         <button type="button" class="btn-close" data-bs-dismiss="alert"
+                             aria-label="Close"></button>
+                     </div>
+                 @endif
 
-                        <div class="col">
-                            <img src="logo.png" class="w-25" alt="">
-                        </div>
+                 @if (session()->has('hasError'))
+                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                         <strong>{{ session('hasError') }}</strong>
+                         <button type="button" class="btn-close" data-bs-dismiss="alert"
+                             aria-label="Close"></button>
+                     </div>
+                 @endif
+                 {{-- Pemberitahuan ketika berhsil register atau login --}}
 
-                        {{-- Pemberitahuan ketika berhsil register atau login --}}
-                        @if (session()->has('success'))
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <strong>{{ session('success') }}</strong>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                    aria-label="Close"></button>
-                            </div>
-                        @endif
-    
-                        @if (session()->has('hasError'))
-                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                <strong>{{ session('hasError') }}</strong>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                    aria-label="Close"></button>
-                            </div>
-                        @endif
-                        {{-- Pemberitahuan ketika berhsil register atau login --}}
-                        <div class="d-flex align-items-center h-custom-2 px-4 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
-
-                            <form style="width: 23rem;" action="/" method="post">
-                                @csrf
-                                <h3 class="fw-bold mb-3 pb-3" style="letter-spacing: 1px;">Masuk Akun</h3>
-                                <p>Jika kamu belum memiliki akun terdaftar</p>
-                                <p>Kamu bisa <a href="/register"
-                                        style="text-decoration: none; color: #FF5D0A;"
-                                        class="link-warning">Daftar disini !</a></p>
-                                <div class="form-outline mb-1">
-                                    <label for="exampleInputEmail1" class="form-label fw-bold mt-3">Email</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail1"
-                                        placeholder="Enter you email address" name="email"></input>
-                                </div>
-                                <div class="form-outline mb-1">
-                                    <label for="exampleInputPassword1" class="form-label fw-bold mt-3">Kata
-                                        Sandi</label>
-                                    <input placeholder="Enter you password" type="password" class="form-control"
-                                        name="password" id="exampleInputPassword1">
-                                </div>
-                                <div class="pt-1 mb-4">
-                                    <button class="btn btn-warning btn-md rounded-pill fw-bold"
-                                        type="submit">Masuk</button>
-                                </div>
-                            </form>
-                        </div>
+                        <i class="fas fa-crow fa-2x me-3 pt-5 mt-xl-4" style="color: #709085;"></i>
+                        <p class="h2 fw-bold mb-0">booKita</p>
                     </div>
+
+                    <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
+
+                        <form action="/" method="POST" style="width: 23rem;">
+                            @csrf
+                            <h3 class="fw-bold mb-3 pb-3" style="letter-spacing: 1px;">Masuk Akun</h3>
+                            <p class="fw-semibold">Belum punya akun ? <a href="/register" class=""
+                                    style="text-decoration: none; color: #FF5D0A">Daftar disini</a></p>
+                            <div class="form-outline">
+                                <label class="form-label fw-bold mt-4" for="form2Example28">Email :</label>
+                                <input type="email" id="formEmail" name="email"
+                                    class="form-control form-control-sm " />
+                            </div>
+                            <div class="form-outline">
+                                <label class="form-label fw-bold mt-5" for="inputPassword">Kata Sandi :</label>
+                                <input type="password" id="formEmail" name="password"
+                                    class="form-control form-control-sm " />
+                            </div>
+
+                            <button class="btn btn-warning rounded-pill fw-bold mt-5" type="submit">Masuk</button>
+                        </form>
+
+                    </div>
+
                 </div>
                 <div class="col-sm-6 py-10 d-none d-sm-block pt-5">
-                    <img src="login.png" alt="Login" class="w-100 vh-95">
+                    <img src="Login.png" alt="Login image" class="page-image w-100">
                 </div>
             </div>
+        </div>
     </section>
 
     {{-- cdn bootstrap --}}

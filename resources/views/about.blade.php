@@ -16,7 +16,7 @@
 
     {{-- Vite buat hot reload --}}
     @vite([])
-    <title>{{ $active }}</title>
+    <title>booKita | {{ $active }}</title>
     <link rel="shortcut icon" href="icon-bookita-fix.png" />
 
     <style>
@@ -52,6 +52,11 @@
 
         .deskripsi {
             text-align: justify;
+        }
+
+        .card-shadow {
+            border: 1px solid black;
+            box-shadow: 10px 10px 5px 0px gray;
         }
 
         @media (max-width: 576px) {
@@ -219,7 +224,7 @@
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h4 class="card-title text-bold fw-bold">UI Design & Front-End</h4>
+                        <h4 class="card-title text-bold fw-bold">UI & Front-End Web Developer</h4>
                         <p class="card-text"><small class="text-body-secondary">Alfian Muhadiin Fatahillah</small></p>
                         <p class="card-text deskripsi">Saya adalah front-end enginer dan UI designer pemula, saya
                             menggunakan
@@ -230,10 +235,46 @@
         </div>
 
         <div class="d-flex flex-row-reverse">
+            <div class="card mb-3 border-0" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="winton.jpeg" class="img-about rounded-circle img-fluid " alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h4 class="card-title fw-bold">UI/UX & Full-Stack Web Developer</h4>
+                            <p class="card-text"><small class="text-body-secondary">Winton Almundarisna</small></p>
+                            <p class="card-text deskripsi">Saya adalah seorang php web developer yang fokus menggunakan
+                                LARAVEL
+                                dan MySQL sejak tahun 2021 hingga sekarang.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-5 border-0" style="max-width: 540px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="deni.png" class="img-about img-fluid " alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h4 class="card-title fw-bold">Front-End Web Developer</h4>
+                        <p class="card-text"><small class="text-body-secondary">Deni Ardiansyah</small></p>
+                        <p class="card-text deskripsi"> Saya belajar front-end semenjak masuk kuliah dan masih belajar
+                            hingga
+                            sekarang.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex flex-row-reverse">
             <div class="card mb-5 border-0" style="max-width: 540px;">
                 <div class="row g-0">
                     <div class="col-md-4">
-                        <img src="dion.png" class="img-about img-fluid " alt="...">
+                        <img src="dion.jpeg" class="img-about img-fluid rounded-circle" alt="...">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
@@ -248,19 +289,17 @@
             </div>
         </div>
 
-
         <div class="card mb-5 border-0" style="max-width: 540px;">
             <div class="row g-0">
                 <div class="col-md-4">
-                    <img src="deni.png" class="img-about img-fluid " alt="...">
+                    <img src="rizal.jpeg" class="img-about img-fluid rounded-circle " alt="...">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h4 class="card-title fw-bold">Front-End</h4>
-                        <p class="card-text"><small class="text-body-secondary">Deni Ardiansyah</small></p>
+                        <h4 class="card-title fw-bold">Sistem Analis</h4>
+                        <p class="card-text"><small class="text-body-secondary">Muhammad Rizal Mulyawan</small></p>
                         <p class="card-text deskripsi"> Saya belajar front-end semenjak masuk kuliah dan masih belajar
-                            hingga
-                            sekarang.</p>
+                            hingga sekarang, dan Saya seorang gamers yang suka flutter.</p>
                     </div>
                 </div>
             </div>
@@ -269,21 +308,75 @@
         <div class="d-flex flex-row-reverse">
             <div class="card mb-3 border-0" style="max-width: 540px;">
                 <div class="row g-0">
-                    <div class="col-md-4">
-                        <img src="winton.png" class="img-about img-fluid " alt="...">
+                    <div class="col-md-4 rounded-circle">
+                        <img src="andri.jpeg" class="img-about rounded-circle img-fluid " alt="...">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h4 class="card-title fw-bold">Full Stack & UI/UX Design</h4>
-                            <p class="card-text"><small class="text-body-secondary">Winton Almundarisna</small></p>
-                            <p class="card-text deskripsi">Saya adalah seorang php web developer yang fokus menggunakan
-                                LARAVEL
-                                dan MySQL sejak tahun 2021 hingga sekarang.</p>
+                            <h4 class="card-title fw-bold">Staf Marketing</h4>
+                            <p class="card-text"><small class="text-body-secondary">Andri Saefulloh </small></p>
+                            <p class="card-text deskripsi">saya adalah seorang guru eskul yang belajar Mysql dan java
+                                dari awal masuk kuliah sampai sekarang</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="card mb-5 border-0" style="max-width: 540px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="ahya.png" class="img-about img-fluid rounded-circle " alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h4 class="card-title fw-bold">Staf Administrasi</h4>
+                        <p class="card-text"><small class="text-body-secondary">Muhammad Ahya Adityo</small></p>
+                        <p class="card-text deskripsi"> Saya adalah seorang guru les matematika yang menyukai
+                            perhitungan bukan kodingan</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="fw-bolder text-center mt-5 mb-4">Kritik dan Saran</h2>
+
+        {{-- kritik dan saran --}}
+        <div class="card card-shadow border-black border-2" style="background-color: #F1592B">
+            <div class="row g-0">
+                <div class="col-md-4 my-auto">
+                    <img src="{{ asset('kritik.png') }}" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8 text-white">
+                    <form action="/kritik-saran" method="POST">
+                        @csrf
+                        <div class="card-body">
+                            <div class="mb-3 row">
+                                <h5 class="card-title text-center mt-3 mb-5">Ayo masukkan kritik dan saran kamu, agar
+                                    booKita bisa
+                                    menjadi semakin lebih baik lagi</h5>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="kritik" class="col-sm-2 col-form-label">Kritik</label>
+                                <div class="col-sm-10">
+                                    <textarea name="kritik" autofocus id="kritik" cols="30" rows="3" class="form-control"></textarea>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="saran" class="col-sm-2 col-form-label">Saran</label>
+                                <div class="col-sm-10">
+                                    <textarea name="saran" id="saran" cols="20" rows="3" class="form-control"></textarea>
+                                    <button class="btn kirim btn-light w-100 mb-3 mt-5" type="submit">Kirim</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- kritik dan saran --}}
+
     </div>
 
     @include('layouts.footer')
@@ -291,6 +384,45 @@
     {{-- cdn bootstrap --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
+
+    {{-- cdn sweetalert2 --}}
+    <script language="JavaScript" type="text/javascript" src="{{ asset('js/jquery3.7.1.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {{-- cdn sweetalert2 --}}
+
+
+    <script>
+        @if (Session::has('kritik'))
+            Swal.fire({
+                imageUrl: "{{ asset('img/home/thank.png') }}",
+                imageWidth: 500,
+                imageHeight: 500,
+                imageAlt: "Welcome image",
+                timer: 2000,
+                showConfirmButton: false
+            });
+        @endif
+
+        $(document).ready(function() {
+            $(document).on('click', '.kirim', function(event) {
+                var form = $(this).closest("form");
+
+                event.preventDefault();
+                Swal.fire({
+                    title: "Sudah yakin?",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit();
+                    }
+                });
+            });
+        });
     </script>
 </body>
 
